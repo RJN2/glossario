@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Glossary do
-	before { @glossary = Glossary.new(title: "example") }
+		before { @glossary = Glossary.new(title: "example") }
 
 	subject { @glossary }
 

@@ -1,7 +1,13 @@
 Glossario::Application.routes.draw do
   root  'static_pages#home'
-  match '/help',      to: 'static_pages#help',    via: 'get'
-  match 'glossaries', to: 'glossaries#index',     via: 'get'
+
+  match '/help',          to: 'static_pages#help',    via: 'get'
+
+  resources :glossaries
+  # # match 'glossaries',     to: 'glossaries#index',     via: 'get'
+  # match 'glossaries/new', to: 'glossaries#new',       via: 'get'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
