@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Glossary pages" do
 	subject { page }
 
-	describe "Index page" do
+	describe "index page" do
 		let!(:g1)	{ FactoryGirl.create(:glossary, title: "Eileen") }
 		let!(:g2)	{ FactoryGirl.create(:glossary, title: "Bar") }
 
@@ -19,6 +19,31 @@ describe "Glossary pages" do
 		end
 	end
 
+	describe "show page" do
+		let(:glossary)	{ FactoryGirl.create(:glossary) }
+		let!(:term_Z) do
+			FactoryGirl.create(:term, glossary: glossary,
+																term: "Zombie",
+																definition: "an undead creature that likes brains")
+		end
+		let!(:term_A) do
+			FactoryGirl.create(:term, glossary: glossary,
+																term: "Android",
+																definition: "a humanoid looking robot that can't be trusted")
+		end
+
+		before { visit glossary_path(glossary) }
+
+		it { should have_content(glossary.title) }
+		it { should have_title(glossary.title) }
+
+		describe "terms" do
+			it { should have_content(term_Z.term) }
+			it { should have_content(term_Z.definition) }
+			it { should have_content(term_A.term) }
+			it { should have_content(term_A.definition) }
+		end
+	end
 
 	describe "glossary creation" do
 		before { visit root_path }

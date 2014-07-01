@@ -1,2 +1,10 @@
 <% provide(:title, @glossary.title) %>
 <h1><%= @glossary.title %></h1>
+
+<div class="row">
+	<% if @glossary.terms.any? %>
+		<ol id="terms">
+			<%= render @terms %>
+		</ol>
+	<% end %>
+</div>

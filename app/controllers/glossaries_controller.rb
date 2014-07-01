@@ -6,6 +6,7 @@ class GlossariesController < ApplicationController
 
   def show
   	@glossary = Glossary.find(params[:id])
+    @terms = @glossary.terms
   end
 
   def create

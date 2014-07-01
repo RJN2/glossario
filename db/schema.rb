@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619215926) do
+ActiveRecord::Schema.define(version: 20140701015555) do
 
   create_table "glossaries", force: true do |t|
     t.string   "title"
     t.integer  "status",     default: 1, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "terms", force: true do |t|
+    t.string   "term"
+    t.string   "definition"
+    t.integer  "glossary_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
