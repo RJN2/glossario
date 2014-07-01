@@ -1,9 +1,13 @@
 Glossario::Application.routes.draw do
-  root  'static_pages#home'
+
+
+  root  'glossaries#index'
 
   match '/help',          to: 'static_pages#help',    via: 'get'
 
-  resources :glossaries
+  resources :glossaries, except: ['show']
+
+
   # # match 'glossaries',     to: 'glossaries#index',     via: 'get'
   # match 'glossaries/new', to: 'glossaries#new',       via: 'get'
 

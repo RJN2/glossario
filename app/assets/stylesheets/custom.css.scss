@@ -101,6 +101,18 @@ footer {
   }
 }
 
+/* home */
+
+#welcome-msg {
+  font-size: 6em;
+  letter-spacing: 0px;
+  margin: 30px 0 80px 0;
+  font-weight: bolder;
+  text-align: left;
+  font-family: inherit;
+  cursor:pointer;
+}
+
 /* miscellaneous */
 
 .debug_dump {
