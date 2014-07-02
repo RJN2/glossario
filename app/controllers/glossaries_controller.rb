@@ -1,4 +1,5 @@
 class GlossariesController < ApplicationController
+  
   def index
     @glossary = Glossary.new
     @glossaries = Glossary.all
@@ -6,6 +7,7 @@ class GlossariesController < ApplicationController
 
   def show
   	@glossary = Glossary.find(params[:id])
+    @term = @glossary.terms.build
     @terms = @glossary.terms
   end
 

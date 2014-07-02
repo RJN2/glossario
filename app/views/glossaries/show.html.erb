@@ -4,7 +4,13 @@
 <div class="row">
 	<% if @glossary.terms.any? %>
 		<ol id="terms">
-			<%= render @terms %>
+			<%= render @glossary.terms %>
 		</ol>
 	<% end %>
+</div>
+
+<div class="row">
+	<section>
+		<%= render 'terms/term_form' %>
+	</section>
 </div>
