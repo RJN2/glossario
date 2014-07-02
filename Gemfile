@@ -13,6 +13,8 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+  gem 'faker', '~> 1.3.0'
+  gem 'rails-erd', github: 'paulwittmann/rails-erd', branch: 'mavericks'
 end
 
 group :test do
