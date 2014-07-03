@@ -7,6 +7,7 @@ class TermsController < ApplicationController
 			flash[:success] = "Term created"
 			redirect_to glossary_url(@glossary)
 		else
+			@terms = @glossary.terms.order('term ASC')
 			render 'glossaries/show'
 		end
 	end

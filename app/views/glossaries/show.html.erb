@@ -1,13 +1,11 @@
 <% provide(:title, @glossary.title) %>
 <h1><%= @glossary.title %></h1>
 
-<div class="row">
-	<% if @glossary.terms.any? %>
-		<ol id="terms">
-			<%= render @glossary.terms %>
-		</ol>
-	<% end %>
-</div>
+<% if @glossary.terms.any? %>
+	<ul id="terms">
+		<%= render @terms %>
+	</ul>
+<% end %>
 
 <div class="row">
 	<section>
