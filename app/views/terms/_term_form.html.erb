@@ -1,10 +1,16 @@
-<%= form_for([@glossary, @term]) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<div class="field">
-		<%= f.text_field :term, placeholder: "new term" %>
+<div id="addGlossary" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addGlossary" aria-hidden="true">
+	<div class="container" id="add-glossary-form">
+		<%= form_for([@glossary, @term]) do |f| %>
+			<div class="title-input sign-up-email" style="width:100%;">
+				<%= f.text_field :term, placeholder: "term" %>
+			</div>
+			<div class="field">
+				<%= f.text_area :definition, placeholder: "definition" %>
+			</div>
+			<div>
+				<%= f.submit "Post", class: "btn btn-large btn-primary", id: "glossary-new-submit" %>
+			</div>
+			<%= render 'shared/error_messages', object: f.object %>
+		<% end %>
 	</div>
-	<div class="field">
-		<%= f.text_area :definition, placeholder: "definition" %>
-	</div>
-	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
-<% end %>
+</div>

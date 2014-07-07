@@ -4,6 +4,14 @@
    		<li><%= link_to "Sign up",	'#' %></li>
       <li><%= link_to "Help",		help_path %></li>
       <li><%= link_to "Contact",	'#' %></li>
+      <li><%= link_to "Home", root_path %></li>
+      <% if params[:controller] == "glossaries" && params[:action] == "show" %>
+      	<li>
+					<%= link_to '#', data: { :toggle => 'modal', :target => '#addGlossary' } do %>
+						<i class="fa fa-plus-circle fa-5x" id="term-add"></i>
+					<% end %>
+				</li>
+      <% end %>
     </ul>
   </nav>
 </footer>
