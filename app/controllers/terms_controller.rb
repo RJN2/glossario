@@ -12,6 +12,12 @@ class TermsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@term = @glossary.terms.find_by(id: params[:id])
+		@term.destroy
+		redirect_to glossary_url(@glossary)
+	end
+
 	private
 
 		def term_params

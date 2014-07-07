@@ -1,4 +1,4 @@
 <li>
-	<span id="title"><%= glossary.title %></span>
+	<%= link_to glossary.title, glossary_path(glossary), id: "glossary-#{glossary.id}" %>
 	<span id="status"><%= glossary.status %></span>
 </li>

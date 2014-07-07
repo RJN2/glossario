@@ -24,10 +24,18 @@ describe "Term pages" do
 				fill_in 'term_term', 				with: "android"
 				fill_in 'term_definition',	with: "a humanoid looking robot that cannot be trusted"
 			end
-			
+
 			it "should create a term" do
 				expect { click_button "Post" }.to change(Term, :count).by(1)
 			end
+		end
+	end
+
+	describe "term destruction" do
+		let(:term) { FactoryGirl.create(:term) }
+
+		it "should delete a term" do
+			expect { click_link "delete" }.to change(Term, :count).by(-1)
 		end
 	end
 end

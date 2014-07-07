@@ -14,8 +14,8 @@ describe "Glossary pages" do
 		it { should_not have_title("| Glossaries") }
 
 		describe "glossaries" do
-			it { should have_content(g1.title) }
-			it { should have_content(g2.title) }
+			it { should have_selector("a#glossary-#{g1.id}", text: g1.title) }
+			it { should have_selector("a#glossary-#{g2.id}", text: g2.title) }
 		end
 	end
 

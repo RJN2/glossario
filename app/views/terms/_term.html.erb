@@ -1,4 +1,6 @@
 <li>
 	<span class="term"><%= term.term %></span>
 	<span class="definition"><%= term.definition %></span>
+	<%= link_to "delete", glossary_term_path(@glossary, term), method: :delete,
+															data: { confirm: "You sure?" } %>
 </li>
