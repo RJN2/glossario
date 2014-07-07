@@ -32,8 +32,10 @@ describe "Term pages" do
 	end
 
 	describe "term destruction" do
-		let(:term) { FactoryGirl.create(:term) }
-
+		
+		let!(:term) { FactoryGirl.create(:term, glossary: glossary) }
+		before { visit glossary_path(glossary) }
+		
 		it "should delete a term" do
 			expect { click_link "delete" }.to change(Term, :count).by(-1)
 		end
