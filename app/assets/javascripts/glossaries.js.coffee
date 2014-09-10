@@ -1,23 +1,21 @@
 ready = ->
 	$("h1#welcome-msg").click ->
   	$('section.page-map').toggle()
-  	return
 
-  $('a#addGlossary').click ->
-  	$('form#new_term').show()
-  	return
-
-	$("#addGlossary").on "show.bs.modal", ->
+	$("#addTerm").on "show.bs.modal", ->
 	  $(".super").addClass "blurred"
-	  return
 
-	$("#addGlossary").on "shown.bs.modal", ->
-	  $("input#glossary_title").focus()
-	  return
+	$("#addTerm").on "shown.bs.modal", ->
+		$("#term_term").focus()
 
-	$("#addGlossary").on "hidden.bs.modal", ->
+	$("textarea#term_definition").keypress (e) ->
+  	$("form#new_term").submit()  if e.which is 13
+
+	$("#addTerm").on "hidden.bs.modal", ->
 	  $(".super").removeClass "blurred"
-	  return
+
+	$('#term-edit').click ->
+		$('.term-delete').toggle()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

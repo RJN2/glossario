@@ -1,0 +1,8 @@
+$('li#term_<%= @term.id %>').on('ajax:success', function(evt, data, stat, xhr){
+	var msg = xhr.getResponseHeader('X-Message');
+	var type = xhr.getResponseHeader('X-Message-Type');
+	show_ajax_message(msg, type);
+	fade_flash();
+
+	$(this).remove();
+});

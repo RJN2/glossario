@@ -1,5 +1,5 @@
 class GlossariesController < ApplicationController
-  
+
   def index
     @glossary = Glossary.new
     @glossaries = Glossary.all
@@ -15,7 +15,7 @@ class GlossariesController < ApplicationController
     @glossary = Glossary.new(glossary_params)
     if @glossary.save
       flash[:success] = "Glossary created!"
-      redirect_to glossaries_url
+      redirect_to glossary_url(@glossary)
     else
       @glossaries = Glossary.all
       render 'index'

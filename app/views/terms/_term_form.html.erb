@@ -1,16 +1,16 @@
-<div id="addGlossary" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addGlossary" aria-hidden="true">
-	<div class="container" id="add-glossary-form">
-		<%= form_for([@glossary, @term]) do |f| %>
-			<div class="title-input sign-up-email" style="width:100%;">
+<div id="addTerm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addTerm" aria-hidden="true">
+	<div class="container modal-dialog" id="add-term-form">
+		<%= form_for([@glossary, @term], remote: true) do |f| %>
+			<div class="term-input sign-up-email">
 				<%= f.text_field :term, placeholder: "term" %>
 			</div>
-			<div class="field">
+			<div class="definition-input">
 				<%= f.text_area :definition, placeholder: "definition" %>
 			</div>
-			<div>
-				<%= f.submit "Post", class: "btn btn-large btn-primary", id: "glossary-new-submit" %>
+			<div class="invisi-button">
+				<%= f.submit "Post", class: "btn btn-large btn-primary", id: "term-new-submit" %>
 			</div>
-			<%= render 'shared/error_messages', object: f.object %>
+			<div id="error_explanation"></div>
 		<% end %>
 	</div>
 </div>

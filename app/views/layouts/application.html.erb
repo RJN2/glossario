@@ -8,10 +8,16 @@
 </head>
 <body>
 	<%= render 'layouts/header' %>
-  <div class="container">
+  <div id="flash-message">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+  </div>
+  <div class="container super">
     <%= yield %>
 	  <%= render 'layouts/footer' %>
 	  <%= debug(params) if Rails.env.development? %>
   </div>
+  <%= render 'layouts/modals' %>
 </body>
 </html>

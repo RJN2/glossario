@@ -1,6 +1,12 @@
-<li>
-	<span class="term"><%= term.term %></span>
+<%= content_tag :li, id: "term_#{term.id}" do %>
+	<%= link_to "delete", glossary_term_path(@glossary, term),
+												remote: true,
+												method: :delete,
+												data: { confirm: "You sure?" },
+												id: "delete_term_#{term.id}",
+												class: 'term-delete' %>
+	<span class="term">
+		<%= link_to term.term, '#', data: { :toggle => 'modal', :target => '#showTerm' } %>
+	</span>
 	<span class="definition"><%= term.definition %></span>
-	<%= link_to "delete", glossary_term_path(@glossary, term), method: :delete,
-															data: { confirm: "You sure?" } %>
-</li>
+<% end %>

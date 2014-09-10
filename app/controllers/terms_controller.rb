@@ -1,30 +1,33 @@
 class TermsController < ApplicationController
-	before_filter :get_glossary
+	before_filter :set_glossary
+	before_action :all_terms
+	respond_to :html, :js
 
 	def create
-		@term = @glossary.terms.build(term_params)
-		if @term.save
-			flash[:success] = "Term created"
-			redirect_to glossary_url(@glossary)
-		else
-			@terms = @glossary.terms.order('term ASC')
-			render 'glossaries/show'
-		end
+		@term = @glossary.terms.create(term_params)
+
+		# flash[:notice] = "Term created." if @term.save
+		# respond_with( @term, :layout => !request.xhr? )
 	end
 
 	def destroy
-		@term = @glossary.terms.find_by(id: params[:id])
+		@term = @glossary.terms.find(params[:id])
 		@term.destroy
-		redirect_to glossary_url(@glossary)
+		flash.now[:notice] = "Term destroyed"
 	end
 
 	private
+
+		def all_terms
+			@terms = @glossary.terms.order('term ASC')
+		end
 
 		def term_params
 			params.require(:term).permit(:term, :definition)
 		end
 
-		def get_glossary
+		def set_glossary
 			@glossary = Glossary.find(params[:glossary_id])
 		end
+
 end

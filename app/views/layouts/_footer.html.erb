@@ -7,11 +7,15 @@
       <li><%= link_to "Home", root_path %></li>
       <% if params[:controller] == "glossaries" && params[:action] == "show" %>
       	<li>
-					<%= link_to '#', data: { :toggle => 'modal', :target => '#addGlossary' } do %>
+					<%= link_to '#', data: { :toggle => 'modal', :target => '#addTerm' } do %>
 						<i class="fa fa-plus-circle fa-5x" id="term-add"></i>
 					<% end %>
 				</li>
+        <li>
+          <a><i class="fa fa-adjust fa-5x" id="term-edit"></i></a>
+        </li>
       <% end %>
+      <li><%= Time.now.strftime('%H:%M:%S') %></li>
     </ul>
   </nav>
 </footer>
