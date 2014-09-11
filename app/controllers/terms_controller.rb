@@ -1,13 +1,25 @@
 class TermsController < ApplicationController
 	before_filter :set_glossary
-	before_action :all_terms
+	before_action :all_terms, only: [:create, :update]
+	before_action :set_terms, only: [:edit, :update]
 	respond_to :html, :js
+
+	def new
+		@term = @glossary.terms.new
+	end
 
 	def create
 		@term = @glossary.terms.create(term_params)
 
 		# flash[:notice] = "Term created." if @term.save
 		# respond_with( @term, :layout => !request.xhr? )
+	end
+
+	def edit
+	end
+
+	def update
+		@term.update_attributes(term_params)
 	end
 
 	def destroy
@@ -20,6 +32,10 @@ class TermsController < ApplicationController
 
 		def all_terms
 			@terms = @glossary.terms.order('term ASC')
+		end
+
+		def set_terms
+			@term = @glossary.terms.find(params[:id])
 		end
 
 		def term_params

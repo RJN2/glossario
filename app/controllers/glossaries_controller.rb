@@ -7,7 +7,6 @@ class GlossariesController < ApplicationController
 
   def show
   	@glossary = Glossary.find(params[:id])
-    @term = @glossary.terms.new
     @terms = @glossary.terms.order('term ASC')
   end
 

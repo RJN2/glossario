@@ -1,0 +1,24 @@
+var el = $('form#edit_term');
+
+<% if @term.errors.any? %>
+
+  // Create a list of errors
+  var errors = $('<ul />');
+
+  <% @term.errors.full_messages.each do |error| %>
+    errors.append('<li><%= escape_javascript( error ) %></li>');
+  <% end %>
+
+  // Display errors on form
+  el.find('#error_explanation').html(errors);
+
+<% else %>
+
+  // We could also render a partial to display the term here
+  $('#terms').html("<%= escape_javascript(render @terms) %>");
+
+  // Clear form
+  el.find('input:text,textarea').val('');
+  el.find('#error_explanation').empty();
+
+<% end %>

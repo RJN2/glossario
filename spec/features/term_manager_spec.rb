@@ -19,6 +19,11 @@ feature 'Term management' do
 		end
 	end
 
+	context 'User edits a term' do
+		scenario 'they see the term updated' do
+		end
+	end
+
 	context 'User deletes a term' do
 		scenario 'they see the term removed' do
 

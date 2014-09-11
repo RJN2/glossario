@@ -130,7 +130,7 @@ footer {
   visibility:hidden;
 }
 
-#addTerm {
+#termForm {
   color:white;
   outline:none;
   left:0;
@@ -186,6 +186,15 @@ footer {
       line-height:36px;
       font-size:36px;
     }
+  }
+}
+
+.term {
+  .term-text {
+    color:black;
+  }
+  .term-edit {
+    color:blue;
   }
 }
 

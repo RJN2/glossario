@@ -6,7 +6,10 @@
 												id: "delete_term_#{term.id}",
 												class: 'term-delete' %>
 	<span class="term">
-		<%= link_to term.term, '#', data: { :toggle => 'modal', :target => '#showTerm' } %>
+		<%= link_to term.term,	edit_glossary_term_path(@glossary, term),
+														remote: true,
+														data: { :toggle => 'modal', :target => '#termForm' },
+														class: 'term-text' %>
 	</span>
 	<span class="definition"><%= term.definition %></span>
 <% end %>
