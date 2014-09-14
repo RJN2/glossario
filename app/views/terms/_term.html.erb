@@ -1,10 +1,12 @@
-<%= content_tag :li, id: "term_#{term.id}" do %>
-	<%= link_to "delete", glossary_term_path(@glossary, term),
-												remote: true,
-												method: :delete,
-												data: { confirm: "You sure?" },
-												id: "delete_term_#{term.id}",
-												class: 'term-delete' %>
+<%= content_tag :li, id: "term_#{term.id}", class: "term-line" do %>
+	<%= link_to glossary_term_path(@glossary, term),
+							remote: true,
+							method: :delete,
+							data: { confirm: "You sure?" },
+							id: "delete_term_#{term.id}",
+							class: 'term-delete' do %>
+		<i class="fa fa-minus-square fa-1x"></i>
+	<% end %>
 	<span class="term">
 		<%= link_to term.term,	edit_glossary_term_path(@glossary, term),
 														remote: true,

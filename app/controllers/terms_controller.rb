@@ -1,7 +1,7 @@
 class TermsController < ApplicationController
 	before_filter :set_glossary
-	before_action :all_terms, only: [:create, :update]
-	before_action :set_terms, only: [:edit, :update]
+	before_action :all_terms, only: [:create, :update, :destroy]
+	before_action :set_terms, only: [:edit, :update, :destroy]
 	respond_to :html, :js
 
 	def new
@@ -23,9 +23,7 @@ class TermsController < ApplicationController
 	end
 
 	def destroy
-		@term = @glossary.terms.find(params[:id])
 		@term.destroy
-		flash.now[:notice] = "Term destroyed"
 	end
 
 	private

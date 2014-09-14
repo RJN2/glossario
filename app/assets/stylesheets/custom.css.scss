@@ -189,18 +189,24 @@ footer {
   }
 }
 
-.term {
-  .term-text {
-    color:black;
+
+/* Terms */
+.term-line {
+  list-style:none;
+  font-size:24px;
+  .term-delete {
+    display:none;
   }
-  .term-edit {
-    color:blue;
+  .term {
+    .term-text {
+      color:black;
+    }
+    .term-edit {
+      color:blue;
+    }
   }
 }
 
-.term-delete {
-  display:none;
-}
 
 .blurred {
   -webkit-filter: blur(10px);

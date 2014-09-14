@@ -9,8 +9,9 @@
       	<li>
 					<%= link_to new_glossary_term_path(@glossary, @term),
                       remote: true,
-                      data: { :toggle => 'modal', :target => '#termForm' } do %>
-						<i class="fa fa-plus-circle fa-5x" id="add-terms"></i>
+                      data: { :toggle => 'modal', :target => '#termForm' },
+                      id: 'add-terms' do %>
+						<i class="fa fa-plus-circle fa-5x"></i>
 					<% end %>
 				</li>
         <li>

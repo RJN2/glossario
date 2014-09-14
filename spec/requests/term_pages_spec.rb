@@ -7,6 +7,9 @@ describe "Term pages" do
 	before { visit glossary_path(glossary) }
 
 	describe "term creation" do
+		
+		before { find('#add-terms').click }
+
 		describe "with invalid information" do
 			it "should not create a term" do
 				expect { click_button "Post" }.not_to change(Term, :count)
