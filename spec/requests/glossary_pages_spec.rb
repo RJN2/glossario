@@ -39,9 +39,7 @@ describe "Glossary pages" do
 
 		describe "terms" do
 			it { should have_content(term_Z.term) }
-			it { should have_content(term_Z.definition) }
 			it { should have_content(term_A.term) }
-			it { should have_content(term_A.definition) }
 		end
 	end
 

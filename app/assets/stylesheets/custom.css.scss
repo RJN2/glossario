@@ -36,6 +36,11 @@ textarea {
   }
 }
 
+.container {
+  width:920px;
+  padding:0;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -117,11 +122,23 @@ footer {
 /* miscellaneous */
 
 .debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
+  display:none;
+  clear: 0;
+  float: 0;
+  width:auto;
+  margin-top: 0;
+  position:absolute;
+  right:0;
+  top:0;
   @include box_sizing;
+}
+
+#debug_time {
+  cursor:pointer;
+  font-size:24px;
+  &:hover {
+    color:red;
+  }
 }
 
 /* form */
@@ -189,17 +206,35 @@ footer {
   }
 }
 
+/* Full Term */
+.modal-dialog {
+  width:920px;
+  .full-term {
+    color:white;
+    h1 {
+      text-align:left;
+    }
+    p {
+      text-align:left;
+      font-size:20px;
+    }
+  }
+}
+
 
 /* Terms */
 .term-line {
   list-style:none;
-  font-size:24px;
+  line-height:1;
   .term-delete {
     display:none;
+    font-size:12px;
   }
   .term {
+    line-height:1.5;
     .term-text {
       color:black;
+      font-size:26px;
     }
     .term-edit {
       color:blue;
@@ -216,3 +251,73 @@ footer {
   filter: blur(10px);
 }
 
+/* Glossary Show */
+.glossary-title {
+  font-size: 6em;
+  letter-spacing: 0px;
+  margin: 30px 0 80px 0;
+  font-weight: bolder;
+  text-align: left;
+  font-family: inherit;
+}
+
+ol#terms {
+  list-style: none;
+  margin: 10px 0;
+  padding:0;
+  li {
+  }
+}
+
+/* exported from old glossary */
+/*
+
+h1#glossary-title {
+font-size: 6em;
+letter-spacing: 0px;
+margin: 30px 0 80px 0;
+font-weight: bolder;
+text-align: left;
+font-family: inherit;
+}
+
+h1#home-title {
+  font-size: 7em;
+  letter-spacing: 0px;
+  margin-top: 180px;
+  font-weight: bolder;
+  text-align: left;
+  font-family: inherit;
+}
+
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+width: 940px;
+}
+
+.container {
+margin-right: auto;
+margin-left: auto;
+}
+
+body.sign-up-home {
+transition: all 0.5s;
+color: white;
+background-color: black;
+}
+
+body {
+padding-top: 60px;
+}
+
+body {
+margin: 0;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 20px;
+color: #333333;
+background-color: white;
+}
+
+
+
+*/

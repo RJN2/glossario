@@ -1,5 +1,6 @@
 class GlossariesController < ApplicationController
-
+  respond_to :html, :js, :json
+  
   def index
     @glossary = Glossary.new
     @glossaries = Glossary.all
@@ -8,6 +9,8 @@ class GlossariesController < ApplicationController
   def show
   	@glossary = Glossary.find(params[:id])
     @terms = @glossary.terms.order('term ASC')
+
+    gon.glossary = glossary_path
   end
 
   def create

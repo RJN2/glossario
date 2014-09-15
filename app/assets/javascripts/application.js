@@ -14,28 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
+//= require js-routes
 //= require_tree .
-
-// // FLASH NOTICE ANIMATION
-// var fade_flash = function() {
-//     $("#flash_notice").delay(5000).fadeOut("slow");
-//     $("#flash_alert").delay(5000).fadeOut("slow");
-//     $("#flash_error").delay(5000).fadeOut("slow");
-// };
-// fade_flash();
-
-// var show_ajax_message = function(msg, type) {
-//     $("#flash-message").html('<div id="flash_'+type+'">'+msg+'</div>');
-//     fade_flash();
-// };
-
-// $(document).on("ajax:error", "form", function(evt, xhr, status, error) {
-//   var errors, message, _results;
-//   console.log("not working!")
-//   errors = xhr.responseJSON.error;
-//   _results = [];
-//   for (message in errors) {
-//     _results.push($('#errors ul').append('<li>' + errors[message] + '</li>'));
-//   }
-//   return _results;
-// });

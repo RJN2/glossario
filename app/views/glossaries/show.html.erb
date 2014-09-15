@@ -1,8 +1,8 @@
 <% provide(:title, @glossary.title) %>
-<h1><%= @glossary.title %></h1>
+<%= content_tag :h1, @glossary.title, class: 'glossary-title' %>
 
 <% if @glossary.terms.any? %>
-	<ul id="terms">
+	<ol id="terms">
 		<%= render @terms %>
-	</ul>
+	</ol>
 <% end %>

@@ -5,13 +5,12 @@
 							data: { confirm: "You sure?" },
 							id: "delete_term_#{term.id}",
 							class: 'term-delete' do %>
-		<i class="fa fa-minus-square fa-1x"></i>
+		<i class="fa fa-minus-square fa-2x"></i>
 	<% end %>
 	<span class="term">
-		<%= link_to term.term,	edit_glossary_term_path(@glossary, term),
+		<%= link_to term.term,	glossary_term_path(@glossary, term),
 														remote: true,
-														data: { :toggle => 'modal', :target => '#termForm' },
+														data: { :toggle => 'modal', :target => '#termForm', :glossary => @glossary.id, :term => term.id },
 														class: 'term-text' %>
 	</span>
-	<span class="definition"><%= term.definition %></span>
 <% end %>

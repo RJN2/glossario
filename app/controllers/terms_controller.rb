@@ -1,8 +1,11 @@
 class TermsController < ApplicationController
 	before_filter :set_glossary
 	before_action :all_terms, only: [:create, :update, :destroy]
-	before_action :set_terms, only: [:edit, :update, :destroy]
+	before_action :set_terms, only: [:edit, :update, :destroy, :show]
 	respond_to :html, :js
+
+	def show
+	end
 
 	def new
 		@term = @glossary.terms.new
@@ -16,7 +19,7 @@ class TermsController < ApplicationController
 	end
 
 	def edit
-	end
+  end
 
 	def update
 		@term.update_attributes(term_params)
