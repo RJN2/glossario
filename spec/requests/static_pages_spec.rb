@@ -28,7 +28,7 @@ describe "Static pages" do
 
   it "should have the right links on the layout" do
     visit root_path
-    click_link "Help"
+    find(:css, '#help a').click
     expect(page).to have_title(full_title('Help'))
   end
 end

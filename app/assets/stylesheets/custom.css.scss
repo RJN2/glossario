@@ -71,10 +71,14 @@ p {
 /* footer */
 
 footer {
+  position:fixed;
+  bottom:20px;
+  width:920px;
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
   color: $gray-light;
+  line-height:1;
   a {
     color: $gray;
     &:hover {
@@ -100,9 +104,67 @@ footer {
   ul {
     float: left;
     list-style: none;
-    li {
-      float: left;
-      margin-right: 10px;
+    padding-left:0;
+    margin-left:0;
+    width:100%;
+    &#nav-left-side {
+      width:auto;
+    }
+      li {
+        float: left;
+        margin-left: 0;
+        margin-right: 10px;
+        i {
+          cursor:pointer;
+          &#home-icon { color:green; }
+          &#omni-icon { color:orange; }
+        }
+        &:first-child {
+          height:70px;
+          float: left;
+          overflow: hidden;
+          position: relative;
+          text-decoration: none;
+          transition: all 500ms linear 500ms;
+          ul.extra {
+            height:70px;
+            float: left;
+            opacity: 0;
+            position: relative;
+            width: 0px;
+            transition: width 150ms linear,
+                        opacity 0s linear;
+            -webkit-transition: width 150ms linear,
+                                opacity 0s linear;
+            li, a, i {
+              display:none;
+            }
+          }
+          &:hover{
+            ul.extra {
+              opacity:1;
+              width:210px;
+              li, a, i {
+                display:inline-block;
+              }
+            }
+          }
+        }
+      &#home {
+        float:right;
+      }
+    }
+  }
+}
+
+.out{
+  &:hover{
+    ul.extra {
+      opacity:1;
+      width:210px;
+      li, a, i {
+        display:inline-block;
+      }
     }
   }
 }

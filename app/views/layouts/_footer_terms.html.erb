@@ -1,0 +1,8 @@
+<li>
+	<%= link_to new_glossary_term_path(@glossary, @term),
+              remote: true,
+              data: { :toggle => 'modal', :target => '#termForm' } do %>
+    <%= content_tag :i, nil, id: 'add-terms', class: 'fa fa-plus-circle fa-5x' %>
+	<% end %>
+</li>
+<%= footer_button('edit-terms', 'fa-adjust') %>

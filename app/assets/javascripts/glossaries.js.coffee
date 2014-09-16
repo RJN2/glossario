@@ -17,28 +17,19 @@ ready = ->
 	$("#termForm").on "hidden.bs.modal", ->
 	  $(".super").removeClass "blurred"
 
-	$.EditLinks = (options) ->
-		console.log("working")
-		base = this
-		base.options = []
-		
-		base._build = ->
-			$.getJSON gon.glossary, (data) ->
-				$.each data, (i, term) ->
- 					term_links =
- 						edit_path: term.edit_path
- 						show_path: term.show_path
- 					base.options.push term_links
- 					return
- 				console.log(base.options)
- 				return
- 		return
- 		base._build()
+	$("#omni-icon").mouseover (ev) ->
+	  $("#omni-icon").removeClass("fa-bullseye").addClass "fa-circle"
+	  $("#nav-left-side").addClass 'out'
+	  return
+
+	$('#nav-left-side').mouseleave (ev) ->
+		console.log('working!')
+		$('#omni-icon').removeClass('fa-circle').addClass('fa-bullseye')
+		$('#nav-left-side').removeClass('out')
 		return
 
-	$.EditLinks()
-
-	$('#edit-terms').click ->
+	$('#edit-terms').click (ev) ->
+		ev.preventDefault()
 		$('.term-delete').toggle()
 		$('.term-text').toggleClass('term-edit')
 		$('.term-text').each ->
