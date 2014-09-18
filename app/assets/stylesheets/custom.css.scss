@@ -26,7 +26,16 @@ section {
 }
 
 textarea {
-  resize: vertical;
+  resize: none;
+  padding: 4px 6px;
+  height: 300px;
+}
+
+a {
+  &:focus {
+    outline:none;
+    color:#555555;
+  }
 }
 
 .center {
@@ -34,6 +43,13 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+li:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .container {
@@ -71,7 +87,7 @@ p {
 /* footer */
 
 footer {
-  position:fixed;
+  position:absolute;
   bottom:20px;
   width:920px;
   margin-top: 45px;
@@ -140,15 +156,15 @@ footer {
               display:none;
             }
           }
-          &:hover{
-            ul.extra {
-              opacity:1;
-              width:210px;
-              li, a, i {
-                display:inline-block;
-              }
-            }
-          }
+          // &:hover{
+          //   ul.extra {
+          //     opacity:1;
+          //     width:210px;
+          //     li, a, i {
+          //       display:inline-block;
+          //     }
+          //   }
+          // }
         }
       &#home {
         float:right;
@@ -157,17 +173,6 @@ footer {
   }
 }
 
-.out{
-  &:hover{
-    ul.extra {
-      opacity:1;
-      width:210px;
-      li, a, i {
-        display:inline-block;
-      }
-    }
-  }
-}
 
 /* home */
 
@@ -198,6 +203,7 @@ footer {
 #debug_time {
   cursor:pointer;
   font-size:24px;
+  float:right;
   &:hover {
     color:red;
   }
@@ -228,42 +234,77 @@ footer {
   background-clip: inherit;
   top:25%;
   display:none;
-  .term-input {
-    input {
-      background-color:transparent;
-      width:100%;
-      line-height:52px;
-      font-size:52px;
-      border:none;
-      border-bottom:2px white solid;
-      outline:none;
-      display:block;
-      box-shadow:none;
-      -webkit-box-shadow:none;
-      border-radius:0;
-      webkit-border-radius:0;
-      color:white;
-      &:focus {
+  #full-term {
+    color:white;
+    padding-right:100px;
+    #full-term-header {
+      padding-right:180px;
+      margin-bottom:2px;
+      h1 {
+        text-align:left;
+        width:100%;
+        line-height:46px;
+        font-size:46px;
+        border:none;
         outline:none;
+        display:block;
+        margin: 0px 0px 10px 0px;
+        padding: 4px 6px;
+        font-weight:normal;
+      }
+    }
+    #full-term-text {
+      margin-top:10px;
+      p {
+        padding:4px 6px;
+        text-align:left;
+        width:100%;
+        display:block;
+        line-height:30px;
+        font-size:30px;
+      }
+    }
+  }
+  form {
+    padding-right:100px;
+    .term-input {
+      padding-right:180px;
+      input {
+        background-color:transparent;
+        width:100%;
+        line-height:46px;
+        font-size:46px;
+        border:none;
+        border-bottom:2px white solid;
+        outline:none;
+        display:block;
         box-shadow:none;
         -webkit-box-shadow:none;
         border-radius:0;
         webkit-border-radius:0;
-        border-bottom:2px white solid;
+        color:white;
+        &:focus {
+          outline:none;
+          box-shadow:none;
+          -webkit-box-shadow:none;
+          border-radius:0;
+          webkit-border-radius:0;
+          border-bottom:2px white solid;
+        }
       }
     }
-  }
-  .definition-input {
-    margin-top:10px;
-    textarea {
-      color:white;
-      outline:none;
-      background-color:transparent;
-      border:none;
-      width:100%;
-      display:block;
-      line-height:36px;
-      font-size:36px;
+    .definition-input {
+      margin-top:10px;
+      textarea {
+        color:white;
+        outline:none;
+        background-color:transparent;
+        border:none;
+        width:100%;
+        display:block;
+        line-height:30px;
+        font-size:30px;
+      }
     }
   }
 }
@@ -276,16 +317,11 @@ footer {
 
 .modal-dialog {
   width:920px;
-  .full-term {
-    color:white;
-    h1 {
-      text-align:left;
-    }
-    p {
-      text-align:left;
-      font-size:20px;
-    }
-  }
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+  opacity: 0.96;
+  filter: alpha(opacity=80);
 }
 
 
@@ -293,9 +329,16 @@ footer {
 .term-line {
   list-style:none;
   line-height:1;
+  outline:none;
   .term-delete {
     display:none;
+    width:0;
     font-size:12px;
+    margin-right:5px;
+    transition: width 150ms linear,
+                opacity 0s linear;
+    -webkit-transition: width 150ms linear,
+                        opacity 0s linear;
   }
   .term {
     line-height:1.5;
@@ -329,15 +372,13 @@ footer {
 }
 
 ol#terms {
+  position:relative;
   list-style: none;
   margin: 10px 0;
   padding:0;
   height:300px;
   overflow:scroll;
   bottom:10px;
-  z-index:9999;
-  li {
-  }
 }
 
 /* exported from old glossary */

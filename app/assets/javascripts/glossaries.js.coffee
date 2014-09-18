@@ -16,20 +16,21 @@ ready = ->
 
 	$("#termForm").on "hidden.bs.modal", ->
 	  $(".super").removeClass "blurred"
+	  $('#omni-icon').removeClass('fa-circle').addClass('fa-bullseye')
+	  $('ul.extra').css({'opacity': 0, 'width': "0px"}).find('*').css('display', 'none')
 
 	$("#omni-icon").mouseover (ev) ->
 	  $("#omni-icon").removeClass("fa-bullseye").addClass "fa-circle"
-	  $("#nav-left-side").addClass 'out'
+	  $('ul.extra').css({'opacity': 1, 'width': "210px"}).find('*').css('display', 'inline-block')
 	  return
 
 	$('#nav-left-side').mouseleave (ev) ->
-		console.log('working!')
-		$('#omni-icon').removeClass('fa-circle').addClass('fa-bullseye')
-		$('#nav-left-side').removeClass('out')
-		return
+		unless $('body').hasClass('modal-open')
+			$('#omni-icon').removeClass('fa-circle').addClass('fa-bullseye')
+			$('ul.extra').css({'opacity': 0, 'width': "0px"}).find('*').css('display', 'none')
+			return
 
 	$('#edit-terms').click (ev) ->
-		ev.preventDefault()
 		$('.term-delete').toggle()
 		$('.term-text').toggleClass('term-edit')
 		$('.term-text').each ->
@@ -40,6 +41,7 @@ ready = ->
 			else
 				$(this).attr 'href', Routes.glossary_term_path(glossary, term)
 			return
+		ev.preventDefault()	
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

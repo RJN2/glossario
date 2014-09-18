@@ -10,13 +10,11 @@
             <%= footer_button('help', 'fa-question-circle', link: help_path) %>
           </ul>
         </li>
-        <!-- <div id="int-menu"> -->
-          <% if params[:controller] == "glossaries" && params[:action] == "show" %>
-              <%= render 'layouts/footer_terms' %>
-          <% end %>
-          <li id="debug_time"><%= Time.now.strftime('%H:%M:%S') %></li>
-        <!-- </div> -->
+        <% if params[:controller] == "glossaries" && params[:action] == "show" %>
+            <%= render 'layouts/footer_terms' %>
+        <% end %>
       </ul>
+      <li id="debug_time"><%= Time.now.strftime('%H:%M:%S') %></li>
       <%= footer_button('home', 'fa-home') %>
     </ul>
   </nav>

@@ -1,4 +1,8 @@
-<%= content_tag :div, class: 'full-term' do %>
-	<%= content_tag :h1, @term.term, class: 'full-term-term' %>
-	<%= content_tag :p, @term.definition, class: 'full-term-definition' %>
+<%= content_tag :div, id: 'full-term' do %>
+	<%= content_tag :div, id: 'full-term-header' do %>
+		<%= content_tag :h1, @term.term, class: 'full-term-term' %>
+	<% end %>
+	<%= content_tag :div, id: 'full-term-text' do %>
+		<%= content_tag :p, @term.definition, class: 'full-term-definition' %>
+	<% end %>
 <% end %>
