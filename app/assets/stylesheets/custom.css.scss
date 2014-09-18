@@ -324,6 +324,10 @@ footer {
   filter: alpha(opacity=80);
 }
 
+.selected {
+  text-decoration:underline;
+}
+
 
 /* Terms */
 .term-line {

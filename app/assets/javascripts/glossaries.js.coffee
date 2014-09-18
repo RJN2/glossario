@@ -30,7 +30,7 @@ ready = ->
 			$('ul.extra').css({'opacity': 0, 'width': "0px"}).find('*').css('display', 'none')
 			return
 
-	$('#edit-terms').click (ev) ->
+	edit_mode = ->
 		$('.term-delete').toggle()
 		$('.term-text').toggleClass('term-edit')
 		$('.term-text').each ->
@@ -41,7 +41,43 @@ ready = ->
 			else
 				$(this).attr 'href', Routes.glossary_term_path(glossary, term)
 			return
-		ev.preventDefault()	
+
+	$('#edit-terms').click (ev) ->
+		edit_mode()
+		ev.preventDefault()
+
+	document.onkeydown = (e) ->
+		k = e.keyCode
+		if (k == 38 or k == 40) and (not ($('body').hasClass('modal-open')))
+			e.preventDefault()
+			return false
+
+	terms_menu_item = $('ol#terms li span.term a')
+	terms_menu_item.first().addClass('selected').focus()
+	$(document).keydown (e) ->
+		selected = $('.selected')
+
+		if e.keyCode is 40 and (not ($('body').hasClass('modal-open'))) # down
+			unless $('ol#terms li:last-child span.term a').hasClass('selected')
+				selected.removeClass('selected').parentsUntil('ol#terms')
+																				.next()
+																				.find('span.term a')
+																				.addClass('selected').focus()
+
+		if e.keyCode is 38 and (not ($('body').hasClass('modal-open'))) # down
+			unless $('ol#terms li:first-child span.term a').hasClass('selected')
+				selected.removeClass('selected').parentsUntil('ol#terms')
+																				.prev()
+																				.find('span.term a')
+																				.addClass('selected').focus()
+
+		if e.keyCode is 39 and (not ($('body').hasClass('modal-open'))) # right
+			edit_mode()
+
+	$(terms_menu_item).mouseover ->
+		$(terms_menu_item).removeClass "selected"
+		$(this).addClass("selected").focus()
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
