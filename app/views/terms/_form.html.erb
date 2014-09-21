@@ -1,6 +1,9 @@
 <%= form_for([@glossary, @term], remote: true) do |f| %>
-	<div class="term-input sign-up-email">
+	<div class="term-input">
 		<%= f.text_field :term, placeholder: "term" %>
+	</div>
+	<div class="acronym-input">
+		<%= f.text_field :acronym, placeholder: "acronym" %>
 	</div>
 	<div class="definition-input">
 		<%= f.text_area :definition, placeholder: "definition" %>

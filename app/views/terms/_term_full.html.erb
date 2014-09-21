@@ -1,8 +1,13 @@
 <%= content_tag :div, id: 'full-term' do %>
 	<%= content_tag :div, id: 'full-term-header' do %>
-		<%= content_tag :h1, @term.term, class: 'full-term-term' %>
+		<%= content_tag :h1, @term.term, class: 'ft-term' %>
+	<% end %>
+	<% if @term.acronym.present? %>
+		<%= content_tag :div, id: 'full-term-acronym' do %>
+			<%= content_tag :h1, "(#{@term.acronym})", class: 'ft-acronym' %>
+		<% end %>
 	<% end %>
 	<%= content_tag :div, id: 'full-term-text' do %>
-		<%= content_tag :p, @term.definition, class: 'full-term-definition' %>
+		<%= content_tag :p, @term.definition, class: 'ft-definition' %>
 	<% end %>
 <% end %>

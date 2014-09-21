@@ -8,6 +8,7 @@ describe Term do
 
 	it { should respond_to(:term) }
 	it { should respond_to(:definition) }
+	it { should respond_to(:acronym) }
 	it { should respond_to(:glossary_id) }
 	it { should respond_to(:glossary) }
 	its(:glossary) { should eq glossary }
@@ -31,6 +32,16 @@ describe Term do
 
 	describe "when definition is not present" do
 		before { @term.definition = " " }
+		it { should_not be_valid }
+	end
+	
+	describe "when acronym is not present" do
+		before { @term.acronym = " " }
+		it { should be_valid }
+	end
+
+	describe "when acronym is too long" do
+		before { @term.acronym = "a" * 11 }
 		it { should_not be_valid }
 	end
 end

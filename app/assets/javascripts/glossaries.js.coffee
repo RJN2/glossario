@@ -74,10 +74,20 @@ ready = ->
 		if e.keyCode is 39 and (not ($('body').hasClass('modal-open'))) # right
 			edit_mode()
 
-	$(terms_menu_item).mouseover ->
+	terms_menu_item.click (ev) ->
 		$(terms_menu_item).removeClass "selected"
 		$(this).addClass("selected").focus()
 
+	term_string = $('#term_term').val()
+	acronymize = (ev) ->
+		a_regex = /[A-Z]+/
+		tester = a_regex.test term_string
+		console.log(tester)
+
+	$(document).keydown (e) ->
+		k = e.keyCode
+		if k is 9 and ($('body').hasClass('modal-open'))
+			$('#term_term').acronymize()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

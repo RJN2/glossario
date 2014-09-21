@@ -41,5 +41,8 @@ var el = $('form#new_term');
   // Clear form
   el.find('input:text,textarea').val('');
   el.find('#error_explanation').empty();
+  var created_term = <%= @term.id %>
+  $("li#term_" + created_term).find('span.term a').addClass('selected').focus()
+  
 
 <% end %>

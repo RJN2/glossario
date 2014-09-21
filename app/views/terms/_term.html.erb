@@ -11,6 +11,7 @@
 		<%= link_to term.term,	glossary_term_path(@glossary, term),
 														remote: true,
 														data: { :toggle => 'modal', :target => '#termForm', :glossary => @glossary.id, :term => term.id },
-														class: 'term-text' %>
+														class: 'term-text' %>	
 	</span>
+	<%= term.acronym %>
 <% end %>

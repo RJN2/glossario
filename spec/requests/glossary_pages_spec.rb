@@ -23,13 +23,15 @@ describe "Glossary pages" do
 		let(:glossary)	{ FactoryGirl.create(:glossary) }
 		let!(:term_Z) do
 			FactoryGirl.create(:term, glossary: glossary,
-																term: "Zombie",
-																definition: "an undead creature that likes brains")
+																term: "Zombie Walker",
+																definition: "an undead creature that likes brains",
+																acronym: "zw")
 		end
 		let!(:term_A) do
 			FactoryGirl.create(:term, glossary: glossary,
-																term: "Android",
-																definition: "a humanoid looking robot that can't be trusted")
+																term: "Android Human",
+																definition: "a humanoid looking robot that can't be trusted",
+																acronym: "ah")
 		end
 
 		before { visit glossary_path(glossary) }
@@ -39,7 +41,9 @@ describe "Glossary pages" do
 
 		describe "terms" do
 			it { should have_content(term_Z.term) }
+			it { should have_content(term_Z.acronym) }
 			it { should have_content(term_A.term) }
+			it { should have_content(term_A.acronym) }
 		end
 	end
 

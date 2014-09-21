@@ -238,7 +238,26 @@ footer {
     color:white;
     padding-right:100px;
     #full-term-header {
-      padding-right:180px;
+      float:left;
+      margin-bottom:2px;
+      h1 {
+        text-align:left;
+        background-color:transparent;
+        width:100%;
+        line-height:46px;
+        font-size:46px;
+        border:none;
+        outline:none;
+        display:block;
+        margin: 0px 0px 10px 0px;
+        padding: 4px 6px;
+        font-weight:normal;
+      }
+    }
+    #full-term-acronym {
+      float:left;
+      width:150px;
+      margin-left:10px;
       margin-bottom:2px;
       h1 {
         text-align:left;
@@ -255,6 +274,8 @@ footer {
     }
     #full-term-text {
       margin-top:10px;
+      float:left;
+      width:100%;
       p {
         padding:4px 6px;
         text-align:left;
@@ -268,7 +289,36 @@ footer {
   form {
     padding-right:100px;
     .term-input {
-      padding-right:180px;
+      float:left;
+      width:620px;
+      input {
+        background-color:transparent;
+        width:100%;
+        line-height:46px;
+        font-size:46px;
+        border:none;
+        border-bottom:2px white solid;
+        outline:none;
+        display:block;
+        box-shadow:none;
+        -webkit-box-shadow:none;
+        border-radius:0;
+        webkit-border-radius:0;
+        color:white;
+        &:focus {
+          outline:none;
+          box-shadow:none;
+          -webkit-box-shadow:none;
+          border-radius:0;
+          webkit-border-radius:0;
+          border-bottom:2px white solid;
+        }
+      }
+    }
+    .acronym-input {
+      float:left;
+      width:100px;
+      margin-left:20px;
       input {
         background-color:transparent;
         width:100%;
@@ -349,6 +399,14 @@ footer {
     .term-text {
       color:black;
       font-size:26px;
+      &:hover {
+        border-bottom: 1px dashed #999;
+        text-decoration: none; 
+      }
+      &:focus {
+        border-bottom: 2px solid #999;
+        text-decoration: none; 
+      }
     }
     .term-edit {
       color:blue;

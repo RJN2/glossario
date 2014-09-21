@@ -40,7 +40,7 @@ class TermsController < ApplicationController
 		end
 
 		def term_params
-			params.require(:term).permit(:term, :definition)
+			params.require(:term).permit(:term, :definition, :acronym)
 		end
 
 		def set_glossary

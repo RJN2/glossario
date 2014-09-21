@@ -8,7 +8,7 @@ class GlossariesController < ApplicationController
 
   def show
   	@glossary = Glossary.find(params[:id])
-    @terms = @glossary.terms.all
+    @terms = @glossary.terms
 
     gon.glossary = glossary_path
   end

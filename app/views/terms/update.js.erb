@@ -20,5 +20,8 @@ var el = $('form#edit_term');
   // Clear form
   el.find('input:text,textarea').val('');
   el.find('#error_explanation').empty();
+  var updated_term = <%= @term.id %>
+  $("li#term_" + updated_term).find('span.term a').addClass('selected').focus()
+  
 
 <% end %>
