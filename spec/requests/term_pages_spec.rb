@@ -6,18 +6,26 @@ describe "Term pages" do
 	let(:glossary) { FactoryGirl.create(:glossary) }
 	before { visit glossary_path(glossary) }
 
-	describe "term creation" do
+	describe "term creation", :js => true do
 		
-		before { find('#add-terms').click }
+		before { find(:css, '#add-terms a').click }
 
 		describe "with invalid information" do
 			it "should not create a term" do
-				expect { click_button "Post" }.not_to change(Term, :count)
+				expect do
+					element = find('#term-new-submit')
+					element.trigger('click')
+					sleep 3
+				end.not_to change(Term, :count)
 			end
 
 			describe "error messages" do
-				before { click_button "Post" }
-				it { should have_content("error") }
+				before do
+					element = find('#term-new-submit')
+					element.trigger('click')
+					sleep 3
+				end
+				it { should have_selector(:css, '#error_explanation') }
 			end
 		end
 
@@ -29,7 +37,11 @@ describe "Term pages" do
 			end
 
 			it "should create a term" do
-				expect { click_button "Post" }.to change(Term, :count).by(1)
+				expect do
+					element = find('#term-new-submit')
+					element.trigger('click')
+					sleep 3
+				end.to change(Term, :count).by(1)\
 			end
 		end
 	end
@@ -37,10 +49,16 @@ describe "Term pages" do
 	describe "term destruction" do
 		
 		let!(:term) { FactoryGirl.create(:term, glossary: glossary) }
-		before { visit glossary_path(glossary) }
+		before do
+		 visit glossary_path(glossary)
+		end
 		
-		it "should delete a term" do
-			expect { click_link "delete" }.to change(Term, :count).by(-1)
+		it "should delete a term", :js => true  do
+			expect do
+				find(:css, '#edit-terms a').click
+				click_link "delete_term_#{term.id}"
+				sleep 3
+			end.to change(Term, :count).by(-1)
 		end
 	end
 end

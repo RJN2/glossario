@@ -16,7 +16,6 @@ class GlossariesController < ApplicationController
   def create
     @glossary = Glossary.new(glossary_params)
     if @glossary.save
-      flash[:success] = "Glossary created!"
       redirect_to glossary_url(@glossary)
     else
       @glossaries = Glossary.all

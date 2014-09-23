@@ -39,6 +39,7 @@ describe "Glossary pages" do
 		it { should have_content(glossary.title) }
 		it { should have_title(glossary.title) }
 
+		
 		describe "terms" do
 			it { should have_content(term_Z.term) }
 			it { should have_content(term_Z.acronym) }

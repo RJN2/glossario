@@ -57,6 +57,7 @@ GEM
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     choice (0.1.6)
+    cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -139,6 +140,11 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     pg (0.15.1)
+    poltergeist (1.5.1)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -232,6 +238,7 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     websocket (1.0.7)
+    websocket-driver (0.3.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -255,6 +262,7 @@ DEPENDENCIES
   jquery-rails
   js-routes
   pg (= 0.15.1)
+  poltergeist
   rails (= 4.0.5)
   rails-erd!
   rails_12factor (= 0.0.2)
