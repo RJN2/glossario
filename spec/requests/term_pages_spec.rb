@@ -41,7 +41,7 @@ describe "Term pages" do
 					element = find('#term-new-submit')
 					element.trigger('click')
 					sleep 3
-				end.to change(Term, :count).by(1)\
+				end.to change(Term, :count).by(1)
 			end
 		end
 	end

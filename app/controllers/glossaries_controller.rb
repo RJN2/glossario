@@ -13,13 +13,14 @@ class GlossariesController < ApplicationController
     gon.glossary = glossary_path
   end
 
+  def new
+    @glossary = Glossary.new
+  end
+
   def create
     @glossary = Glossary.new(glossary_params)
     if @glossary.save
-      redirect_to glossary_url(@glossary)
-    else
-      @glossaries = Glossary.all
-      render 'index'
+      render :js => "window.location = '#{glossary_path(@glossary)}'"
     end
   end
 

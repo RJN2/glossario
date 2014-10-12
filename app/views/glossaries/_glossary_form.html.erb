@@ -1,7 +1,4 @@
-<%= form_for(@glossary) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	<div class="field">
-		<%= f.text_field :title, placeholder: "new glossary" %>
+<div id="glossaryForm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="glossaryForm" aria-hidden="true">
+	<div class="container modal-dialog" id="glossary-form">
 	</div>
-	<%= f.submit "Post", class: "btn btn-large btn-primary" %>
-<% end %> 
+</div>

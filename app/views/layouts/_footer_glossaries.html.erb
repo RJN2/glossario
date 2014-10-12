@@ -1,0 +1,7 @@
+<%= content_tag :li, id: 'add-glossary' do %>
+	<%= link_to new_glossary_path(@glossary),
+							remote: true,
+							data: { :toggle => 'modal', :target => '#glossaryForm' } do %>
+		<%= content_tag :i, nil, id: 'add-glossary-icon', class: 'fa fa-plus-circle fa-5x' %>
+	<% end %>
+<% end %>
