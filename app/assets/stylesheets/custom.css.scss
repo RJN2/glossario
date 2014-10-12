@@ -379,6 +379,33 @@ footer {
 }
 
 
+/* Glossaries */
+.glossaries {
+  padding-left:0px;
+  .glossary-line {
+    list-style:none;
+    line-height:1;
+    outline:none;
+    margin-bottom:9px;
+    .glossary-link {
+      color:black;
+      font-size:28px;
+      line-height:1;
+    }
+    .break {
+      color:#C0C0C0;
+      font-size:28px;
+      line-height:1;
+      margin:0px 5px;
+    }
+    .created {
+      color:#C0C0C0;
+      font-size:22px;
+      line-height:1;
+    }
+  }
+}
+
 /* Terms */
 .term-line {
   list-style:none;
