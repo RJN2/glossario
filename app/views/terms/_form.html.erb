@@ -8,8 +8,6 @@
 	<div class="definition-input">
 		<%= f.text_area :definition, placeholder: "definition" %>
 	</div>
-	<div class="invisi-button">
-		<%= f.submit "Post", class: "btn btn-large btn-primary", id: "term-new-submit" %>
-	</div>
+	<%= f.submit "Submit", id: "term-new-submit", class: "invisible" %>
 	<div id="error_explanation"></div>
 <% end %>
