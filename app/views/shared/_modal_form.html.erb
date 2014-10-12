@@ -1,0 +1,4 @@
+<% if controller_name == 'glossaries' %>
+	<%= modal('glossary') if params[:action] == 'index' %>
+	<%= modal('term') if params[:action] == 'show' %>
+<% end %>

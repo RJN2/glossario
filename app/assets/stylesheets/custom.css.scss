@@ -215,6 +215,50 @@ footer {
   visibility:hidden;
 }
 
+.modal-form {
+  color:white;
+  outline:none;
+  left:0;
+  width:100%;
+  background-color:transparent;
+  border:0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-background-clip: inherit;
+  -moz-background-clip: inherit;
+  background-clip: inherit;
+  top:25%;
+  display:none;
+  input {
+    background-color:transparent;
+    width:100%;
+    line-height:46px;
+    font-size:46px;
+    border:none;
+    border-bottom:2px white solid;
+    outline:none;
+    display:block;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+    border-radius:0;
+    webkit-border-radius:0;
+    color:white;
+    &:focus {
+      outline:none;
+      box-shadow:none;
+      -webkit-box-shadow:none;
+      border-radius:0;
+      webkit-border-radius:0;
+      border-bottom:2px white solid;
+    }
+  }
+  .invisible { visibility: hidden; }
+}
+
 #termForm {
   color:white;
   outline:none;

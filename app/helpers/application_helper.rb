@@ -17,4 +17,17 @@ module ApplicationHelper
 			end
 		end
 	end
+
+	def modal(object)
+		form = "#{object}Form"
+
+		content_tag :div, id: form,
+											class: 'modal fade modal-form',
+											tabindex: '-1',
+											role: 'dialog',
+											:"aria-labelledby" => form,
+											:"aria-hidden" => 'true' do
+			content_tag :div, nil, id: "#{object}-form", class: 'container modal-dialog'
+		end
+	end
 end

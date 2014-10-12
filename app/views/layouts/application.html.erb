@@ -8,8 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= render 'layouts/header' %>
-  <div id="flash-message">
+	<div id="flash-message">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
@@ -19,6 +18,6 @@
 	  <%= render 'layouts/footer' %>
 	  <%= debug(params) if Rails.env.development? %>
   </div>
-  <%= render 'layouts/modals' %>
+  <%= render 'shared/modal_form' %>
 </body>
 </html>

@@ -5,16 +5,14 @@ ready = ->
 	$("h1#welcome-msg").click ->
   	$('section.page-map').toggle()
 
-	$("#termForm").on "show.bs.modal", ->
+	# form
+	$(".modal-form").on "show.bs.modal", ->
 	  $(".super").addClass "blurred"
 
-	$("#termForm").on "shown.bs.modal", ->
-		$("#term_term").focus()
+	$('.modal-form').on "shown.bs.modal", ->
+		$('form:first *:input[type!=hidden]:first').focus()
 
-	$("textarea#term_definition").keypress (e) ->
-  	$("form#new_term").submit()  if e.which is 13
-
-	$("#termForm").on "hidden.bs.modal", ->
+	$(".modal-form").on "hidden.bs.modal", ->
 	  $(".super").removeClass "blurred"
 	  $('#omni-icon').removeClass('fa-circle').addClass('fa-bullseye')
 	  $('ul.extra').css({'opacity': 0, 'width': "0px"}).find('*').css('display', 'none')
@@ -52,6 +50,7 @@ ready = ->
 			e.preventDefault()
 			return false
 
+
 	terms_menu_item = $('ol#terms li span.term a')
 	terms_menu_item.first().addClass('selected').focus()
 	$(document).keydown (e) ->
@@ -74,20 +73,25 @@ ready = ->
 		if e.keyCode is 39 and (not ($('body').hasClass('modal-open'))) # right
 			edit_mode()
 
+		if e.keyCode is 13 and (not e.shiftKey) and ($('textarea#term_definition').is(":focus"))
+			e.preventDefault()
+			$('form#new_term').submit()
+
+
 	terms_menu_item.click (ev) ->
 		$(terms_menu_item).removeClass "selected"
 		$(this).addClass("selected").focus()
 
-	term_string = $('#term_term').val()
-	acronymize = (ev) ->
-		a_regex = /[A-Z]+/
-		tester = a_regex.test term_string
-		console.log(tester)
+	# term_string = $('#term_term').val()
+	# acronymize = (ev) ->
+	# 	a_regex = /[A-Z]+/
+	# 	tester = a_regex.test term_string
+	# 	console.log(tester)
 
-	$(document).keydown (e) ->
-		k = e.keyCode
-		if k is 9 and ($('body').hasClass('modal-open'))
-			$('#term_term').acronymize()
+	# $(document).keydown (e) ->
+	# 	k = e.keyCode
+	# 	if k is 9 and ($('body').hasClass('modal-open'))
+	# 		$('#term_term').acronymize()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
