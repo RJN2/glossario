@@ -13,9 +13,6 @@ class TermsController < ApplicationController
 
 	def create
 		@term = @glossary.terms.create(term_params)
-
-		# flash[:notice] = "Term created." if @term.save
-		# respond_with( @term, :layout => !request.xhr? )
 	end
 
 	def edit

@@ -95,4 +95,18 @@ describe "Glossary pages" do
 			end
 		end
 	end
+
+	describe "glossary destruction" do
+
+		let!(:glossary) { FactoryGirl.create(:glossary) }
+		before { visit root_path }
+
+		it "should delete a glossary", :js => true do
+			expect do
+				find(:css, '#edit a').click
+				find(:css, "#delete_glossary_#{glossary.id}").click
+				sleep 3
+			end.to change(Glossary, :count).by(-1)
+		end
+	end
 end

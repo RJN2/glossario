@@ -29,7 +29,7 @@ ready = ->
 			return
 
 	edit_mode = ->
-		$('.term-delete').toggle()
+		$('.delete').toggle()
 		$('.term-text').toggleClass('term-edit')
 		$('.term-text').each ->
 			glossary = $(this).data('glossary')

@@ -451,20 +451,17 @@ footer {
 }
 
 /* Terms */
+.delete {
+  display:none;
+  width:0;
+  font-size:12px;
+  margin-right:5px; 
+}
+
 .term-line {
   list-style:none;
   line-height:1;
   outline:none;
-  .term-delete {
-    display:none;
-    width:0;
-    font-size:12px;
-    margin-right:5px;
-    transition: width 150ms linear,
-                opacity 0s linear;
-    -webkit-transition: width 150ms linear,
-                        opacity 0s linear;
-  }
   .term {
     line-height:1.5;
     .term-text {

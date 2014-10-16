@@ -1,4 +1,5 @@
 class GlossariesController < ApplicationController
+  before_action :set_glossary, only: [:show, :destroy]
   respond_to :html, :js, :json
   
   def index
@@ -7,10 +8,7 @@ class GlossariesController < ApplicationController
   end
 
   def show
-  	@glossary = Glossary.find(params[:id])
     @terms = @glossary.terms
-
-    gon.glossary = glossary_path
   end
 
   def new
@@ -25,11 +23,16 @@ class GlossariesController < ApplicationController
   end
 
   def destroy
+    @glossary.destroy
   end
 
   private
 
     def glossary_params
       params.require(:glossary).permit(:title)
+    end
+
+    def set_glossary
+      @glossary = Glossary.find(params[:id])
     end
 end
