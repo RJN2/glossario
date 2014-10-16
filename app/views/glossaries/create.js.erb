@@ -25,7 +25,7 @@ var el = $('form#new_glossary');
   var errors = $('<ul />');
 
   <% @glossary.errors.full_messages.each do |error| %>
-    errors.append('<li><%= escape_javascript( error ) %></li>');
+    errors.append("<li><%= j render( partial: 'shared/error_messages', locals: { object: @glossary } ) %></li>");
   <% end %>
 
   // Display errors on form

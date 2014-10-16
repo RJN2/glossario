@@ -52,7 +52,7 @@ describe "Glossary pages" do
 
 		before do
 			visit root_path
-		 	find(:css, '#add-glossary a').click 
+		 	find(:css, '#add a').click 
 		end
 
 		describe "with invalid information" do

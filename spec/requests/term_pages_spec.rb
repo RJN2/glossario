@@ -8,7 +8,7 @@ describe "Term pages" do
 
 	describe "term creation", :js => true do
 		
-		before { find(:css, '#add-terms a').click }
+		before { find(:css, '#add a').click }
 
 		describe "with invalid information" do
 			it "should not create a term" do
@@ -55,7 +55,7 @@ describe "Term pages" do
 		
 		it "should delete a term", :js => true  do
 			expect do
-				find(:css, '#edit-terms a').click
+				find(:css, '#edit a').click
 				click_link "delete_term_#{term.id}"
 				sleep 3
 			end.to change(Term, :count).by(-1)

@@ -1,0 +1,8 @@
+<%= content_tag :li, id: 'add' do %>
+	<%= link_to polymorphic_url(add, action: :new),
+              remote: true,
+              data: { :toggle => 'modal', :target => '.modal-form' } do %>
+    <%= content_tag :i, nil, id: 'add-icon', class: 'fa fa-plus-circle fa-5x' %>
+	<% end %>
+<% end %>
+<%= footer_button('edit', 'fa-adjust') %>

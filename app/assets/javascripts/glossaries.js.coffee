@@ -40,7 +40,7 @@ ready = ->
 				$(this).attr 'href', Routes.glossary_term_path(glossary, term)
 			return
 
-	$('#edit-terms').click (ev) ->
+	$('#edit').click (ev) ->
 		edit_mode()
 		ev.preventDefault()
 
