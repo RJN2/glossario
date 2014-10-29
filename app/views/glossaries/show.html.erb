@@ -1,8 +1,15 @@
 <% provide(:title, @glossary.title) %>
 <%= content_tag :h1, @glossary.title, class: 'glossary-title' %>
 
+
 <% if @glossary.terms.any? %>
-	<ol id="terms">
-		<%= render @terms %>
-	</ol>
+	<div id="term-list">
+		<div class="search">
+			<input id="search" class="search" autocomplete="off" autofocus />
+		</div>
+		<ol id="terms" class="list">
+			<%= render @terms %>
+		</ol>
+	</div>
 <% end %>
+

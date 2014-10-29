@@ -76,7 +76,15 @@ ready = ->
 		if e.keyCode is 13 and (not e.shiftKey) and ($('textarea#term_definition').is(":focus"))
 			e.preventDefault()
 			$('form#new_term').submit()
+	
 
+	$(document).keyup (e) ->
+		if e and ($('#search').is(':focus'))
+			search_value = $("input#search").val()
+			if search_value.length > 0
+				search_mode()
+			else
+				search_mode_off()
 
 	terms_menu_item.click (ev) ->
 		$(terms_menu_item).removeClass "selected"
@@ -92,6 +100,28 @@ ready = ->
 	# 	k = e.keyCode
 	# 	if k is 9 and ($('body').hasClass('modal-open'))
 	# 		$('#term_term').acronymize()
+
+	search_mode = ->
+		console.log('working')
+		$('body').css('background-color', 'black')
+		$('body').css('color', 'white')
+		$('a').css('color', 'white')
+		$('input').css('color', 'white')
+
+	search_mode_off = ->
+		$('body').css('background-color', 'white')
+		$('body').css('color', 'black')
+		$('a').css('color', 'black')
+		$('input').css('color', 'black')
+
+	filter_list = ->
+		options = valueNames: [
+		  "term"
+		  "acronym"
+		]
+		userList = new List("term-list", options)
+
+	filter_list()
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

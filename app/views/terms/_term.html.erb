@@ -7,11 +7,12 @@
 							class: 'delete term-delete' do %>
 		<i class="fa fa-minus-square fa-2x"></i>
 	<% end %>
-	<span class="term">
-		<%= link_to term.term,	glossary_term_path(@glossary, term),
-														remote: true,
-														data: { :toggle => 'modal', :target => '#termForm', :glossary => @glossary.id, :term => term.id },
-														class: 'term-text' %>	
-	</span>
-	<%= term.acronym %>
+	<%= link_to	glossary_term_path(@glossary, term),
+													remote: true,
+													data: { :toggle => 'modal', :target => '#termForm', :glossary => @glossary.id, :term => term.id } do %>
+				<%= content_tag :span, term.term, class: 'term' %>
+		<% if term.acronym.present? %>
+				<%= content_tag :span, term.acronym, class: 'acronym' %>
+		<% end %>
+	<% end %>
 <% end %>
