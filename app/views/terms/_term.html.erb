@@ -9,7 +9,11 @@
 	<% end %>
 	<%= link_to	glossary_term_path(@glossary, term),
 													remote: true,
-													data: { :toggle => 'modal', :target => '#termForm', :glossary => @glossary.id, :term => term.id } do %>
+													class: 'term-link',
+													data: { :toggle => 'modal',
+																	:target => '#termForm',
+																	:glossary => @glossary.id,
+																	:term => term.id } do %>
 				<%= content_tag :span, term.term, class: 'term' %>
 		<% if term.acronym.present? %>
 				<%= content_tag :span, term.acronym, class: 'acronym' %>

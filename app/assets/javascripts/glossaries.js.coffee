@@ -7,7 +7,7 @@ ready = ->
 
 	# form
 	$(".modal-form").on "show.bs.modal", ->
-	  $(".super").addClass "blurred"
+		$(".super").addClass "blurred"
 
 	$('.modal-form').on "shown.bs.modal", ->
 		$('form:first *:input[type!=hidden]:first').focus()
@@ -28,10 +28,21 @@ ready = ->
 			$('ul.extra').css({'opacity': 0, 'width': "0px"}).find('*').css('display', 'none')
 			return
 
+	filter = (->		
+		filter_input = $('#search')
+
+		focused: ->
+			if filter_input.is(':focus')
+				return
+	)()
+
+	if filter.focused()
+		$('ol#terms')
+
 	edit_mode = ->
 		$('.delete').toggle()
-		$('.term-text').toggleClass('term-edit')
-		$('.term-text').each ->
+		$('.term-link').toggleClass('term-edit')
+		$('.term-link').each ->
 			glossary = $(this).data('glossary')
 			term = $(this).data('term')
 			if $(this).hasClass('term-edit')
@@ -44,38 +55,60 @@ ready = ->
 		edit_mode()
 		ev.preventDefault()
 
-	document.onkeydown = (e) ->
-		k = e.keyCode
-		if (k == 38 or k == 40) and (not ($('body').hasClass('modal-open')))
-			e.preventDefault()
-			return false
+	modal = (->
+		open: ->
+			if $('body').hasClass('modal-open')
+				return true
+	)()
+
+	terms_menu_item = $('ol#terms li a.term-link')
+	# terms_menu_item.first().addClass('selected').focus()
+	$(document.documentElement).keydown (e) ->
+
+		selected 		 		= $('.selected')
+		filter_input 		= $('#search')
+		first_term 	 		= $('ol#terms > :first-child')
+		last_term 			= $('ol#terms > :last-child')
+		terms_menu_item = $('ol#terms li a.term-link')
+		term_link 			= 'a.term-link'
+		k 							= e.keyCode
+
+		if modal.open()
+			if k is 13 and (not e.shiftKey) and ($('textarea#term_definition').is(":focus"))
+				e.preventDefault()
+				$('form#new_term').submit()
+		else
+			if k is 40
+				e.preventDefault()
+				if filter_input.is(':focus')
+					first_term.find(term_link).addClass('selected').focus()
+				else
+					unless last_term.find(term_link).hasClass('selected')
+						selected.removeClass('selected').parentsUntil('ol#terms')
+																						.next()
+																						.find(term_link)
+																						.addClass('selected').focus()
+
+			if k is 38
+				e.preventDefault()
+				if first_term.find(term_link).hasClass('selected')
+					first_term.find(term_link).removeClass('selected')
+					filter_input.focus()
+				else
+					unless first_term.find(term_link).hasClass('selected')
+						selected.removeClass('selected').parentsUntil('ol#terms')
+																						.prev()
+																						.find(term_link)
+																						.addClass('selected').focus()
+			
+			if e.keyCode is 39 # right
+				edit_mode()
+
+			if k is 9
+				e.preventDefault()
+				return
 
 
-	terms_menu_item = $('ol#terms li span.term a')
-	terms_menu_item.first().addClass('selected').focus()
-	$(document).keydown (e) ->
-		selected = $('.selected')
-
-		if e.keyCode is 40 and (not ($('body').hasClass('modal-open'))) # down
-			unless $('ol#terms li:last-child span.term a').hasClass('selected')
-				selected.removeClass('selected').parentsUntil('ol#terms')
-																				.next()
-																				.find('span.term a')
-																				.addClass('selected').focus()
-
-		if e.keyCode is 38 and (not ($('body').hasClass('modal-open'))) # down
-			unless $('ol#terms li:first-child span.term a').hasClass('selected')
-				selected.removeClass('selected').parentsUntil('ol#terms')
-																				.prev()
-																				.find('span.term a')
-																				.addClass('selected').focus()
-
-		if e.keyCode is 39 and (not ($('body').hasClass('modal-open'))) # right
-			edit_mode()
-
-		if e.keyCode is 13 and (not e.shiftKey) and ($('textarea#term_definition').is(":focus"))
-			e.preventDefault()
-			$('form#new_term').submit()
 	
 
 	$(document).keyup (e) ->
@@ -102,16 +135,17 @@ ready = ->
 	# 		$('#term_term').acronymize()
 
 	search_mode = ->
-		console.log('working')
 		$('body').css('background-color', 'black')
 		$('body').css('color', 'white')
 		$('a').css('color', 'white')
+		$('span').css('color', 'white')
 		$('input').css('color', 'white')
 
 	search_mode_off = ->
 		$('body').css('background-color', 'white')
 		$('body').css('color', 'black')
 		$('a').css('color', 'black')
+		$('span').css('color', 'black')
 		$('input').css('color', 'black')
 
 	filter_list = ->
