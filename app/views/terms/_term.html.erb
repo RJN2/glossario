@@ -1,12 +1,15 @@
-<%= content_tag :li, id: "term_#{term.id}", class: "term-line" do %>
+<%= content_tag :li, id: "term_#{term.id}",
+										 data: { term: term.term, acronym: term.acronym, term_id: term.id },
+										 class: "term-line" do %>
 	<%= link_to glossary_term_path(@glossary, term),
 							remote: true,
 							method: :delete,
-							data: { confirm: "You sure?" },
+							data: { confirm: "You sure?", :'term-delete' => term.id },
 							id: "delete_term_#{term.id}",
 							class: 'delete term-delete' do %>
 		<i class="fa fa-minus-square fa-2x"></i>
 	<% end %>
+	<span class="term-id" style="visibility:hidden;"><%= term.id %></span>
 	<%= link_to	glossary_term_path(@glossary, term),
 													remote: true,
 													class: 'term-link',

@@ -39,22 +39,28 @@ var el = $('form#new_term');
       render @terms 
     ) %>");
 
-  var created_term = <%= @term.id %>,
-      new_term     = $("li#term_" + created_term)
+  var termField = $('#term_term'),
+      termAcronym = $('#term_acronym'),
+      termDefinition = $('#term_definition'),
+      errors = $('#error_explanation'),
+      created_term_id = <%= @term.id %>,
+      new_term     = $("li#term_" + created_term_id);
 
-  // Clear form
-  el.find('input:text,textarea').val('');
-  el.find('#error_explanation').empty();
-  
+  clearFields();
+
   new_term.find('a.term-link').addClass('selected').focus()
-
-  console.log('position: ' + new_term.position().top)
-  console.log('offset: ' + new_term.offset().top)
 
   $('ol#terms').animate({
     scrollTop: new_term.position().top
   }, 1000);
 
-  $('#termForm').modal('hide')
+  $('#termForm').modal('hide');
+
+  function clearFields() {
+    termField.val('');
+    termAcronym.val('');
+    termDefinition.val('');
+    errors.empty();
+  }
   
 <% end %>

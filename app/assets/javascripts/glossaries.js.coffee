@@ -5,6 +5,7 @@ ready = ->
 	$("h1#welcome-msg").click ->
   	$('section.page-map').toggle()
 
+
 	# form
 	$(".modal-form").on "show.bs.modal", ->
 		$(".super").addClass "blurred"
@@ -35,9 +36,6 @@ ready = ->
 			if filter_input.is(':focus')
 				return
 	)()
-
-	if filter.focused()
-		$('ol#terms')
 
 	edit_mode = ->
 		$('.delete').toggle()
@@ -81,6 +79,7 @@ ready = ->
 			if k is 40
 				e.preventDefault()
 				if filter_input.is(':focus')
+					selected.removeClass('selected')
 					first_term.find(term_link).addClass('selected').focus()
 				else
 					unless last_term.find(term_link).hasClass('selected')
@@ -101,14 +100,9 @@ ready = ->
 																						.find(term_link)
 																						.addClass('selected').focus()
 			
-			if e.keyCode is 39 # right
-				edit_mode()
-
 			if k is 9
 				e.preventDefault()
 				return
-
-
 	
 
 	$(document).keyup (e) ->
@@ -118,6 +112,7 @@ ready = ->
 				search_mode()
 			else
 				search_mode_off()
+
 
 	terms_menu_item.click (ev) ->
 		$(terms_menu_item).removeClass "selected"
@@ -147,15 +142,41 @@ ready = ->
 		$('a').css('color', 'black')
 		$('span').css('color', 'black')
 		$('input').css('color', 'black')
+		$('#search').val('')
+	
+	
+	options = valueNames: [
+		"term-id"
+	  "term"
+	  "acronym"
+	]
 
-	filter_list = ->
-		options = valueNames: [
-		  "term"
-		  "acronym"
-		]
-		userList = new List("term-list", options)
+	termList = new List("term-list", options)
 
-	filter_list()
+	$(document).on 'ajax:success', 'form#new_term', (evt) ->
+		termList = new List("term-list", options)
+		search_mode_off()
+		return
+
+	$(document).on 'ajax:success', 'form.edit_term', (evt) ->
+		termList = new List("term-list", options)
+		search_mode_off()
+		return
+
+	$(document).on 'ajax:success', '.delete', (evt) ->
+		deleted = $('.deleted')
+		deleted_term = deleted.data('term')
+		deleted_acronym = deleted.data('acronym')
+		deleted_id = deleted.data('term-id')
+		console.log(deleted_id)
+		termList.remove("term-id", deleted_id)
+		termList.update()
+		deleted.remove()
+		search_mode_off()
+		termList.filter()
+		termList.search()
+		termList = new List("term-list", options)
+		return
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
