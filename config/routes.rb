@@ -1,5 +1,6 @@
 Glossario::Application.routes.draw do
 
+  devise_for :users
   root  'glossaries#index'
 
   match '/help',          to: 'static_pages#help',    via: 'get'
