@@ -14,8 +14,8 @@ describe "Glossary pages" do
 		it { should_not have_title("| Glossaries") }
 
 		describe "glossaries" do
-			it { should have_selector("a#glossary-#{g1.id}", text: g1.title.upcase) }
-			it { should have_selector("a#glossary-#{g2.id}", text: g2.title.upcase) }
+			it { should have_selector("#glossary_#{g1.id} .title", text: g1.title.upcase) }
+			it { should have_selector("#glossary_#{g2.id} .title", text: g2.title.upcase) }
 		end
 	end
 
@@ -93,6 +93,27 @@ describe "Glossary pages" do
 				end
 				it { should have_title(full_title('Lorem Ipsum')) }
 			end
+		end
+	end
+
+	describe "glossary update", :js => true do
+
+		let!(:glossary) { FactoryGirl.create(:glossary) }
+		before { visit root_path }
+
+		before do
+			find(:css, '#edit a').click
+			find(:css, "#glossary_#{glossary.id} .link").click
+			sleep 3
+			fill_in 'glossary_title', with: "updated example"
+		end
+
+		it "should edit a glossary" do
+			expect do
+				element = find('#glossary-new-submit')
+				element.trigger('click')
+				sleep 3
+			end.to change { glossary.reload.title }.from("Example").to("updated example")
 		end
 	end
 

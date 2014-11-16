@@ -6,7 +6,6 @@ describe Glossary do
 	subject { @glossary }
 
 	it { should respond_to(:title) }
-	it { should respond_to(:status) }
 	it { should respond_to(:terms) }
 
 	it { should be_valid }
@@ -18,15 +17,6 @@ describe Glossary do
 
 	describe "when title is too long" do
 		before { @glossary.title = 'a' * 61 }
-		it { should_not be_valid }
-	end
-
-	describe "created with default status" do
-		its(:status) { should eq(1) }
-	end
-
-	describe "when status is not present" do
-		before { @glossary.status = nil }
 		it { should_not be_valid }
 	end
 

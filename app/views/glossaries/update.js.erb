@@ -1,0 +1,22 @@
+var el = $('form.edit_glossary');
+
+<% if @glossary.errors.any? %>
+
+	var errors = $('<ul />');
+
+	<% @glossary.errors.full_messages.each do |error| %>
+		errors.append('<li><%= escape_javascript( error ) %></li>');
+	<% end %>
+
+	el.find('#error_explanation').html(errors);
+
+<% else %>
+
+	console.log('success!')
+	
+	$('#glossaries').html("<%= escape_javascript(render @glossaries) %>");
+
+	el.find('input:text').val('');
+	el.find('#error_explanation').empty();
+
+<% end %>

@@ -12,7 +12,7 @@
 	<span class="term-id" style="visibility:hidden;"><%= term.id %></span>
 	<%= link_to	glossary_term_path(@glossary, term),
 													remote: true,
-													class: 'term-link',
+													class: 'link',
 													data: { :toggle => 'modal',
 																	:target => '#termForm',
 																	:glossary => @glossary.id,

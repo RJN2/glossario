@@ -38,16 +38,33 @@ ready = ->
 	)()
 
 	edit_mode = ->
+		list = $('ol')
+
 		$('.delete').toggle()
-		$('.term-link').toggleClass('term-edit')
-		$('.term-link').each ->
-			glossary = $(this).data('glossary')
-			term = $(this).data('term')
-			if $(this).hasClass('term-edit')
-				$(this).attr 'href', Routes.edit_glossary_term_path(glossary, term)
-			else
-				$(this).attr 'href', Routes.glossary_term_path(glossary, term)
-			return
+		$('.link').toggleClass('editable')
+		if list.is('#terms')
+			$('.link').each ->
+				glossary = $(this).data('glossary')
+				term = $(this).data('term')
+				if $(this).hasClass('editable')
+					$(this).attr 'href', Routes.edit_glossary_term_path(glossary, term)
+				else
+					$(this).attr 'href', Routes.glossary_term_path(glossary, term)
+				return
+		else if list.is('#glossaries')
+			$('.link').each ->
+				glossary = $(this).data('glossary')
+				if $(this).hasClass('editable')
+					$(this).attr 'data-remote', true
+					$(this).attr 'data-toggle', 'modal'
+					$(this).attr 'data-target', '#glossaryForm'
+					$(this).attr 'href', Routes.edit_glossary_path(glossary)
+				else
+					$(this).removeAttr 'data-remote'
+					$(this).removeAttr 'data-toggle'
+					$(this).removeAttr 'data-target'
+					$(this).attr 'href', Routes.glossary_path(glossary)
+				return
 
 	$('#edit').click (ev) ->
 		edit_mode()
@@ -59,7 +76,7 @@ ready = ->
 				return true
 	)()
 
-	terms_menu_item = $('ol#terms li a.term-link')
+	terms_menu_item = $('ol#terms li a.link')
 	# terms_menu_item.first().addClass('selected').focus()
 	$(document.documentElement).keydown (e) ->
 
@@ -67,8 +84,8 @@ ready = ->
 		filter_input 		= $('#search')
 		first_term 	 		= $('ol#terms > :first-child')
 		last_term 			= $('ol#terms > :last-child')
-		terms_menu_item = $('ol#terms li a.term-link')
-		term_link 			= 'a.term-link'
+		terms_menu_item = $('ol#terms li a.link')
+		term_link 			= 'a.link'
 		k 							= e.keyCode
 
 		if modal.open()

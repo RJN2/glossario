@@ -5,9 +5,13 @@
 							data: { confirm: "You sure?" },
 							id: "delete_glossary_#{glossary.id}",
 							class: 'delete glossary-delete' do %>
-		<%= content_tag :i, nil, class: "fa fa-archive fa-2x" %>
+		<%= content_tag :i, nil, class: "fa fa-minus-square fa-2x" %>
 	<% end %>
-	<%= link_to glossary.title.upcase, glossary_path(glossary), id: "glossary-#{glossary.id}", class: 'glossary-link' %>
-	<span class="break">\\</span>
+	<%= link_to glossary_path(glossary),
+												class: 'link',
+												data: { :glossary => glossary.id } do %>
+		<%= content_tag :span, glossary.title.upcase, class: 'title' %>
+	<% end %>
+	<span class="break">\\</span
 	<span id="created" class="created"><%= glossary.created_at.strftime("#{glossary.created_at.day.ordinalize} %B, %Y") %></span>
 <% end %>

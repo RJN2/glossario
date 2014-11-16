@@ -46,6 +46,27 @@ describe "Term pages" do
 		end
 	end
 
+	describe "term update", :js => true do
+
+		let!(:term) 		{ FactoryGirl.create(:term, glossary: glossary) }
+		before { visit glossary_path(glossary) }
+
+		before do
+			find(:css, '#edit a').click
+			find(:css, "#term_#{term.id} .link").click
+			sleep 3
+			fill_in 'term_term', with: "updated term example"
+		end
+
+		it "should edit a term" do
+			expect do
+				element = find('#term-new-submit')
+				element.trigger('click')
+				sleep 3
+			end.to change { term.reload.term }.from("test-driven development").to("updated term example")
+		end
+	end
+
 	describe "term destruction" do
 		
 		let!(:term) { FactoryGirl.create(:term, glossary: glossary) }

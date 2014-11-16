@@ -425,14 +425,14 @@ footer {
 
 
 /* Glossaries */
-.glossaries {
+#glossaries {
   padding-left:0px;
   .glossary-line {
     list-style:none;
     line-height:1;
     outline:none;
     margin-bottom:9px;
-    .glossary-link {
+    .link {
       color:black;
       font-size:28px;
       line-height:1;
