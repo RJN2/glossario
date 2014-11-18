@@ -116,10 +116,6 @@ ready = ->
 																						.prev()
 																						.find(term_link)
 																						.addClass('selected').focus()
-			
-			if k is 9
-				e.preventDefault()
-				return
 	
 
 	$(document).keyup (e) ->

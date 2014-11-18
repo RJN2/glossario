@@ -9,7 +9,8 @@
 	<% end %>
 	<%= link_to glossary_path(glossary),
 												class: 'link',
-												data: { :glossary => glossary.id } do %>
+												data: { :glossary => glossary.id },
+												tabindex: '-1' do %>
 		<%= content_tag :span, glossary.title.upcase, class: 'title' %>
 	<% end %>
 	<span class="break">\\</span

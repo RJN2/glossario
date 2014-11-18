@@ -1,13 +1,20 @@
 require 'spec_helper'
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
 describe "Glossary pages" do
 	subject { page }
 
 	describe "index page" do
 		let!(:g1)	{ FactoryGirl.create(:glossary, title: "Eileen") }
 		let!(:g2)	{ FactoryGirl.create(:glossary, title: "Bar") }
+		let(:user) { FactoryGirl.create(:user) }
 
-		before { visit root_path }
+		before do
+			login_as(user, scope: :user)
+			visit root_path
+		end
 
 		it { should have_selector('h1#welcome-msg', text: 'Welcome') }
 		it { should have_title(full_title('')) }
@@ -21,6 +28,7 @@ describe "Glossary pages" do
 
 	describe "show page" do
 		let(:glossary)	{ FactoryGirl.create(:glossary) }
+		let(:user) { FactoryGirl.create(:user) }
 		let!(:term_Z) do
 			FactoryGirl.create(:term, glossary: glossary,
 																term: "Zombie Walker",
@@ -34,7 +42,10 @@ describe "Glossary pages" do
 																acronym: "ah")
 		end
 
-		before { visit glossary_path(glossary) }
+		before do
+			login_as(user, scope: :user)
+			visit glossary_path(glossary)
+		end
 
 		it { should have_content(glossary.title) }
 		it { should have_title(glossary.title) }
@@ -49,8 +60,11 @@ describe "Glossary pages" do
 	end
 
 	describe "glossary creation", :js => true do
+		
+		let(:user) { FactoryGirl.create(:user) }
 
 		before do
+			login_as(user, scope: :user)
 			visit root_path
 		 	find(:css, '#add a').click 
 		end
@@ -99,7 +113,12 @@ describe "Glossary pages" do
 	describe "glossary update", :js => true do
 
 		let!(:glossary) { FactoryGirl.create(:glossary) }
-		before { visit root_path }
+		let(:user) { FactoryGirl.create(:user) }
+		
+		before do 
+			login_as(user, scope: :user)
+			visit root_path
+		end
 
 		before do
 			find(:css, '#edit a').click
@@ -120,7 +139,12 @@ describe "Glossary pages" do
 	describe "glossary destruction" do
 
 		let!(:glossary) { FactoryGirl.create(:glossary) }
-		before { visit root_path }
+		let(:user) { FactoryGirl.create(:user) }
+		
+		before do
+			login_as(user, scope: :user)
+			visit root_path
+		end
 
 		it "should delete a glossary", :js => true do
 			expect do

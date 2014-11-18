@@ -10,7 +10,8 @@ module ApplicationHelper
 
 	def footer_button(icon_id, icon_class, options = {})
 		content_tag :li, id: icon_id do
-			content_tag :a, href: options[:link] do
+			content_tag :a, href: options[:link],
+				data: ({ method: options[:method] } unless options[:method].blank? ) do
 				content_tag :i, nil, id: "#{icon_id}-icon", class: "fa #{icon_class} fa-5x"
 			end
 		end

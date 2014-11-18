@@ -1,11 +1,17 @@
-<div class="center hero-unit">
-  <h1>Welcome to the Sample App</h1>
-
-  <h2>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
-
-  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+<h1 id="home-title">GLOSSAR.IO</h1>
+<div id="tab-slider">
+  
+  <div class="tab-main-content">
+      <div class="tab-slider-wrapper">
+          <div class="tab-content" id="section1">
+          	<%= render 'devise/sessions/new' %>
+          </div>
+          <div class="tab-content" id="section2">
+          	<%= render 'devise/registrations/new' %>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="help-area">
+	<%= link_to 'Forgetful?', help_path, class: 'sign-help' %>
 </div>

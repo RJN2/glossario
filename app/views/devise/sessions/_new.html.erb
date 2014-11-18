@@ -1,0 +1,14 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	<div class="home-input" id="home-form-field1">
+		<%= f.email_field :email, placeholder: "email", autofocus: true, id: "sign_in_email", autocomplete: :off %>
+	</div>
+
+	<div class="home-input right-field">
+		<%= f.password_field :password, placeholder: "password", autocomplete: "off", id: "sign_in_password" %>
+	</div>
+
+	<div class="invisi-button">
+		<%= f.submit "Sign in", id: "sign_in_submit" %>
+	</div>
+	
+<% end %>

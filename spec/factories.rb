@@ -1,4 +1,9 @@
 FactoryGirl.define do
+	factory :user do
+    email 'test@ipsos.com'
+    password 'f4k3p455w0rd'
+  end
+
 	factory :glossary do
 		title 	"Example"
 	end

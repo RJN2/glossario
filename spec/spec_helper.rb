@@ -9,6 +9,7 @@ Spork.prefork do
 
   require 'capybara/rspec'
   require 'capybara/poltergeist'
+  include Warden::Test::Helpers
 
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, {:timeout => 60, :js_errors => false})
@@ -66,6 +67,7 @@ Spork.prefork do
 
     config.after(:each) do
       DatabaseCleaner.clean
+      Warden.test_reset!
     end
 
     # Run specs in random order to surface order dependencies. If you find an

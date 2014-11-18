@@ -1,0 +1,19 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<%= devise_error_messages! %>
+	<div class="home-input sign-up-email" id="home-form-field2">
+		<%= f.email_field :email, placeholder: "email", autocomplete: :off %>
+	</div>
+
+	<div class="home-input">
+		<%= f.password_field :password, placeholder: "password" %>
+	</div>
+
+	<div class="home-input right-field">
+		<%= f.password_field :password_confirmation, placeholder: "confirm" %>
+	</div>
+
+	<div class="invisible">
+		<%= f.submit "Sign up", id: "user-new-submit" %>
+	</div>
+
+<% end %>

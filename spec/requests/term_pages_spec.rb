@@ -1,10 +1,18 @@
 require 'spec_helper'
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
 describe "Term pages" do
 	subject { page }
 
 	let(:glossary) { FactoryGirl.create(:glossary) }
-	before { visit glossary_path(glossary) }
+	let(:user) { FactoryGirl.create(:user) }
+		
+	before do
+		login_as(user, scope: :user)
+		visit glossary_path(glossary)
+	end
 
 	describe "term creation", :js => true do
 		
