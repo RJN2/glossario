@@ -9,7 +9,6 @@ Spork.prefork do
 
   require 'capybara/rspec'
   require 'capybara/poltergeist'
-  include Warden::Test::Helpers
 
   Capybara.register_driver :poltergeist do |app|
     Capybara::Poltergeist::Driver.new(app, {:timeout => 60, :js_errors => false})
