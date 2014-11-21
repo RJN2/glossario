@@ -1,4 +1,4 @@
-<h1 id="welcome-msg">Welcome</h1>
+<%= content_tag :h1, "Welcome, #{current_user.full_name}", id: 'welcome-msg' %>
 
 <% if @glossaries.any? %>
 	<ol id="glossaries" tab-index"-1">

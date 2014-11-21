@@ -2,14 +2,11 @@
 <%= content_tag :h1, @glossary.title, class: 'glossary-title' %>
 
 
-<% if @glossary.terms.any? %>
-	<div id="term-list">
-		<div class="search">
-			<input id="search" class="search" autocomplete="off" autofocus />
-		</div>
-		<ol id="terms" class="list">
-			<%= render @terms %>
-		</ol>
-	</div>
+<%= content_tag :div, id: 'term-list' do %>
+	<%= content_tag :div, class: 'search' do %>
+		<%= text_field_tag 'search', nil, class: 'search', autofocus: true, autocomplete: :off %>
+	<% end %>
+		<%= content_tag :ol, id: 'terms', class: 'list' do %>
+			<%= render @terms if @terms.any? %>
+		<% end %>
 <% end %>
-

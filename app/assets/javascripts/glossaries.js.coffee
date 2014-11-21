@@ -2,10 +2,6 @@ ready = ->
 	$('#debug_time').click ->
 		$('.debug_dump').toggle();
 
-	$("h1#welcome-msg").click ->
-  	$('section.page-map').toggle()
-
-
 	# form
 	$(".modal-form").on "show.bs.modal", ->
 		$(".super").addClass "blurred"
@@ -190,6 +186,8 @@ ready = ->
 		termList.search()
 		termList = new List("term-list", options)
 		return
+
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

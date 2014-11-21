@@ -7,7 +7,7 @@
           <i id='omni-icon' class="fa fa-bullseye fa-5x"></i>
           <ul class="extra">
             <%= footer_button('sign-out','fa-arrow-circle-left', link: destroy_user_session_path(@user), method: :delete ) %>
-            <%= footer_button('profile', 'fa-cog') %>
+            <%= footer_button('profile', 'fa-cog', link: edit_user_registration_path) %>
             <%= footer_button('help', 'fa-question-circle', link: help_path) %>
           </ul>
         </li>
