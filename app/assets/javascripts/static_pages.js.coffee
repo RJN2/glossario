@@ -20,11 +20,11 @@ $(document).ready ->
       switch $contentNum
         when 1
           $("body").removeClass()
-          $("body").addClass "sign-in-home"
+          $("body").addClass "light"
           $("a.sign-help").attr("src", "/help#forgetful").html "Forgetful?"
         when 2
           $("body").removeClass()
-          $("body").addClass "sign-up-home"
+          $("body").addClass "dark"
           $("a.sign-help").attr("src", "/help#what").html "Learn more"
 
     i = $(this)

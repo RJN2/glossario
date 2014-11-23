@@ -20,10 +20,13 @@ html {
 
 body {
   padding-top: 60px;
+  h1 {
+    color:black;
+  }
   i {
     transition: all 0.5s;
   }
-  &.sign-in-home {
+  &.light {
     transition: all 0.5s;
     background-color:white;
     color:black;
@@ -35,7 +38,7 @@ body {
       }
     }
   }
-  &.sign-up-home {
+  &.dark {
     transition: all 0.5s;
     color:white;
     background-color:black;
@@ -43,6 +46,9 @@ body {
       transition: all 0.5s;
       color:white !important;
       border-bottom: white solid 2px !important ;
+    }
+    h1 {
+      color:white;
     }
     i, p, a {
       cursor:pointer;
@@ -292,6 +298,10 @@ footer {
     }
   }
   .invisible { visibility: hidden; }
+}
+
+.ft-term {
+  color:white;
 }
 
 #termForm {

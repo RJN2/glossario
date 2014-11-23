@@ -10,5 +10,10 @@
 	<div class="invisi-button">
 		<%= f.submit "Sign in", id: "sign_in_submit" %>
 	</div>
-	
+
+	<%= content_tag :div, id: 'flash-message' do %>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, id: "flash_#{name}" unless msg.blank? %>
+		<% end %>
+	<% end %>
 <% end %>
