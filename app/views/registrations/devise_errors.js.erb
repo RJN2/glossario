@@ -1,0 +1,10 @@
+if ($('.reg-error').length > 0) {
+	$('.reg-error').remove();
+	$('#section2').append("<%= escape_javascript raw(flash_normal) %>");
+	$('.alert').removeClass('alert-warning');
+	$('.alert').addClass('reg-error').removeClass('alert');
+} else {
+	$('#section2').append("<%= escape_javascript raw(flash_normal) %>");
+	$('.alert').removeClass('alert-warning');
+	$('.alert').addClass('reg-error').removeClass('alert');
+}

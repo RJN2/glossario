@@ -15,6 +15,8 @@ $(document).ready ->
   $(".tab-slider-wrapper").css width: 2 * $width
   $("i#sign-icon").click (event) ->
     event.stopPropagation()
+    $('#flash').remove();
+    $('input').val('');
     $(this).toggleClass "fa-rotate-90"
     animations = ($contentNum) ->
       switch $contentNum
@@ -43,8 +45,7 @@ $(document).ready ->
     $("#section" + $contentNum).find("input").attr "tabindex", "1"
     $("#section" + $contentNum).siblings().find("input").attr "tabindex", "-1"
     $(".tab-slider-wrapper").animate(
-      marginLeft: "-" + ($width * $contentNum - $width)
-    , $delay).promise().done ->
+      marginLeft: "-" + ($width * $contentNum - $width), $delay).promise().done ->
       $("#home-form-field" + $contentNum + " input").focus()
       return
 
@@ -54,4 +55,15 @@ $(document).ready ->
     $(".sign-help").toggle()
     return
 
-  return
+# $(document).on 'submit', 'form#new_user', ->
+#   $.ajax
+#     url: '/signin'
+#     type: 'post'
+#     dataType: 'json'
+#     data: $(this).serialize()
+#     success: (data) ->
+#       alert('success')
+#       return
+#     error: (evt, xhr, status, error) ->
+#       return
+#   false

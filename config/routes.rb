@@ -1,14 +1,15 @@
 Glossario::Application.routes.draw do
 
   # Authentication
-  devise_for :users, skip: [:sessions, :passwords, :confirmations, :registrations]
+  devise_for  :users, skip: [:sessions, :passwords, :confirmations, :registrations],
+                :controllers => { sessions: 'sessions', registrations: 'registrations' } 
   as :user do
     # session handling
-    post    '/signin'  => 'devise/sessions#create',  as: 'user_session'
+    post    '/signin'  => 'sessions#create',  as: 'user_session'
     delete  '/signout' => 'devise/sessions#destroy', as: 'destroy_user_session'
 
     # joining
-    post  '/signup' => 'devise/registrations#create', as: 'user_registration'
+    post  '/signup' => 'registrations#create', as: 'user_registration'
 
     scope '/settings' do
       # password reset

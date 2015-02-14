@@ -39,4 +39,23 @@ module ApplicationHelper
 			end
 		end
 	end
+
+	def flash_type(type)
+		case type
+		when :errors
+			"alert-error"
+		when :alert
+			"alert-warning"
+		when :error
+			"alert-error"
+		when :notice
+			"alert-success"
+		else
+			"alert-info"
+		end
+	end
+
+	def flash_normal
+		render "layouts/flashes"
+	end
 end

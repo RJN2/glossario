@@ -5,6 +5,7 @@
 
 $grayMediumLight: #eaeaea;
 $grayPlaceholder: #969696;
+$whiteFont: white;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -40,21 +41,21 @@ body {
   }
   &.dark {
     transition: all 0.5s;
-    color:white;
+    color:$whiteFont;
     background-color:black;
     input {
       transition: all 0.5s;
-      color:white !important;
+      color:$whiteFont !important;
       border-bottom: white solid 2px !important ;
     }
     h1 {
-      color:white;
+      color:$whiteFont;
     }
     i, p, a {
       cursor:pointer;
       color:$grayPlaceholder;
       &:hover{
-        color:white !important;
+        color:$whiteFont !important;
       }
     }
   }
@@ -224,7 +225,7 @@ footer {
   text-align: left;
   font-family: inherit;
   cursor:pointer;
-  white-space:nowrap;
+  whitespace:nowrap;
 }
 
 /* miscellaneous */
@@ -257,7 +258,7 @@ footer {
 }
 
 .modal-form {
-  color:white;
+  color:$whiteFont;
   outline:none;
   left:0;
   width:100%;
@@ -287,7 +288,7 @@ footer {
     -webkit-box-shadow:none;
     border-radius:0;
     webkit-border-radius:0;
-    color:white;
+    color:$whiteFont;
     &:focus {
       outline:none;
       box-shadow:none;
@@ -301,11 +302,11 @@ footer {
 }
 
 .ft-term {
-  color:white;
+  color:$whiteFont;
 }
 
 #termForm {
-  color:white;
+  color:$whiteFont;
   outline:none;
   left:0;
   margin-left:0;
@@ -324,7 +325,7 @@ footer {
   top:25%;
   display:none;
   #full-term {
-    color:white;
+    color:$whiteFont;
     padding-right:100px;
     #full-term-header {
       float:left;
@@ -393,7 +394,7 @@ footer {
         -webkit-box-shadow:none;
         border-radius:0;
         webkit-border-radius:0;
-        color:white;
+        color:$whiteFont;
         &:focus {
           outline:none;
           box-shadow:none;
@@ -421,7 +422,7 @@ footer {
         -webkit-box-shadow:none;
         border-radius:0;
         webkit-border-radius:0;
-        color:white;
+        color:$whiteFont;
         &:focus {
           outline:none;
           box-shadow:none;
@@ -435,7 +436,7 @@ footer {
     .definition-input {
       margin-top:10px;
       textarea {
-        color:white;
+        color:$whiteFont;
         outline:none;
         background-color:transparent;
         border:none;
@@ -587,7 +588,7 @@ margin-left: auto;
 
 body.sign-up-home {
 transition: all 0.5s;
-color: white;
+color: $whiteFont;
 background-color: black;
 }
 
@@ -690,6 +691,13 @@ h1#home-title {
     .sign-up-email {
       width:820px;
       margin-bottom:10px;
+    }
+    #flash {
+      font-size:16px;
+      margin-top:25px;
+      .reg-error {
+        color:$whiteFont;
+      }
     }
   }
 }

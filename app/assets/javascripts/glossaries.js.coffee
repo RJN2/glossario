@@ -187,7 +187,5 @@ ready = ->
 		termList = new List("term-list", options)
 		return
 
-
-
 $(document).ready(ready)
 $(document).on('page:load', ready)

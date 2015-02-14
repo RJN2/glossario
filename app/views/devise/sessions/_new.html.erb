@@ -6,10 +6,10 @@
 	<div class="home-input right-field">
 		<%= f.password_field :password, placeholder: "password", autocomplete: "off", id: "sign_in_password" %>
 	</div>
-
-	<div class="invisi-button">
+	
+	<%= content_tag :div, class: 'invisi-button' do %>
 		<%= f.submit "Sign in", id: "sign_in_submit" %>
-	</div>
+	<% end %>
 
 	<%= content_tag :div, id: 'flash-message' do %>
 		<% flash.each do |name, msg| %>
