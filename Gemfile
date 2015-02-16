@@ -16,6 +16,7 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
   gem 'faker', '~> 1.3.0'
   gem 'rails-erd', github: 'paulwittmann/rails-erd', branch: 'mavericks'
+  gem 'quiet_assets'
 end
 
 group :test do

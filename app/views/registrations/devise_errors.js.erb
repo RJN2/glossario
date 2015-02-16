@@ -1,10 +1,22 @@
-if ($('.reg-error').length > 0) {
-	$('.reg-error').remove();
-	$('#section2').append("<%= escape_javascript raw(flash_normal) %>");
+<% if controller_name == 'registrations' %>
+	controller = 'signup-error';
+	section = '2';
+<% elsif controller_name == 'sessions' %>
+	controller = 'signin-error';
+	section = '1';
+<% end %>
+
+elController = $('.' + controller);
+elSection 	 = $('#section'+section);
+
+
+if (elController.length > 0) {
+	elController.remove();
+	elSection.append("<%= escape_javascript raw(flash_normal) %>");
 	$('.alert').removeClass('alert-warning');
-	$('.alert').addClass('reg-error').removeClass('alert');
+	$('.alert').addClass(controller).removeClass('alert');
 } else {
-	$('#section2').append("<%= escape_javascript raw(flash_normal) %>");
+	elSection.append("<%= escape_javascript raw(flash_normal) %>");
 	$('.alert').removeClass('alert-warning');
-	$('.alert').addClass('reg-error').removeClass('alert');
+	$('.alert').addClass(controller).removeClass('alert');
 }

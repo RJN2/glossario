@@ -695,8 +695,11 @@ h1#home-title {
     #flash {
       font-size:16px;
       margin-top:25px;
-      .reg-error {
+      .signup-error {
         color:$whiteFont;
+      }
+      .signin-error {
+        color:black;
       }
     }
   }
