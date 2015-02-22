@@ -127,7 +127,7 @@ p {
 /* footer */
 
 footer {
-  position:absolute;
+  position:fixed;
   bottom:20px;
   width:920px;
   margin-top: 45px;
@@ -542,8 +542,7 @@ footer {
   font-family: inherit;
 }
 
-ol#terms {
-  position:relative;
+ol {
   list-style: none;
   margin: 10px 0;
   padding:0;
